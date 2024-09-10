@@ -7,40 +7,44 @@
             <div class="col-md-4">
                 <label>
                     Warehouse
-                    <span class="text-danger">*</span>
                 </label>
-                <select class="form-control" name="" id="">
-                    <option value="">banani</option>
-                    <option value="">gulshan</option>
-                </select>
+                <div>
+                    <WeareHouseDropdown name="wear_house_id"/>
+                </div>
             </div>
             <div class="col-md-4">
-                <label>
+                <label for="openning_stock">
                     Opening Stock
-                    <span class="text-danger">*</span>
                 </label>
-                <input type="text" class="form-control">
+                <input name="openning_stock" id="openning_stock" type="text" class="form-control">
             </div>
             <div class="col-md-4">
-                <label>
+                <label for="low_stock">
                     Low Stock
-                    <span class="text-danger">*</span>
                 </label>
-                <input type="text" class="form-control">
+                <input type="text" name="low_stock" id="low_stock" class="form-control">
             </div>
             <div class="col-md-4">
-                <label>
+                <label for="product_warranty">
                     Product waranty ( days )
-                    <span class="text-danger">*</span>
                 </label>
-                <input type="text" class="form-control">
+                <input type="text" name="product_warranty" id="product_warranty" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="expiration_days">
+                    Expire Date
+                </label>
+                <input type="date" name="expiration_days" id="expiration_days" class="form-control">
             </div>
         </div>
     </div>
 </template>
 <script>
+import WeareHouseDropdown from "../../../Inventory/wearhouse/components/dropdown/DropDownEl.vue"
 export default {
-
+    components: {
+        WeareHouseDropdown,
+    }
 }
 </script>
 <style lang="">
