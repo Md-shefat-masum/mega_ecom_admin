@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" style="max-width: 1400px;">
         <form @submit.prevent="submitHandler">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
@@ -31,11 +31,11 @@
 
                             <hr class="my-5" />
 
-                            <discount-info />
+                            <pricing/>
 
                             <hr class="my-5" />
 
-                            <pricing/>
+                            <discount-info />
 
                             <hr class="my-5" />
 
@@ -52,13 +52,6 @@
                             <hr class="my-5" />
 
                             <seo-information/>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn mt-4 btn-light btn-square px-5">
-                                    <i class="icon-login"></i>
-                                    Submit
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>
