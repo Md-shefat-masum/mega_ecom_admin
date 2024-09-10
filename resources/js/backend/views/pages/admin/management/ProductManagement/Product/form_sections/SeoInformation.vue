@@ -5,22 +5,22 @@
                 <h4>SEO Infromation</h4>
             </div>
             <div class="col-md-12">
-                <label>
+                <label for="meta_title">
                     Meta Title
                 </label>
-                <input type="text" class="form-control">
+                <input type="text" name="meta_title" id="meta_title" class="form-control">
             </div>
             <div class="col-md-12">
-                <label>
+                <label for="meta_description">
                     Meta Description
                 </label>
-                <input type="text" class="form-control">
+                <input type="text" name="meta_description" id="meta_description" class="form-control">
             </div>
             <div class="col-md-12">
-                <label>
+                <label for="meta_keywords">
                     Meta Keywords
                 </label>
-                <input type="text" class="form-control">
+                <input type="text" name="meta_keywords" id="meta_keywords" class="form-control">
             </div>
         </div>
     </div>
