@@ -1,7 +1,8 @@
 <template>
     <div>
 
-        <input @change="preview" class="form-control" type="file" ref="input_files" :accept="accept" :class="classNames"
+        <input @change="preview" class="form-control" type="file" ref="input_files"
+            :accept="accept" :class="classNames"
             :name="name" :multiple="multiple">
 
 
@@ -38,7 +39,8 @@ export default {
             default: "form-control",
         },
         accept: {
-            required: true,
+            required: false,
+            default: "image/*",
         },
         images: {
             default: [],
