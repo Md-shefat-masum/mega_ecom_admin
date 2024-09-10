@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('admin-login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+
+Route::group(['prefix' => 'v1'], function () {
+    Route::get('/all-product-units', function () {
+        $data = DB::table('product_units')
+            ->where('title', '!=', null)
+            // ->where('product_unit_group_id', 1)
+            ->select('title', 'id', 'product_unit_group_id')
+            ->orderBy('id', 'asc')
+            ->get()
+            ->unique('title');
+        return response()->json($data, 200);
+    });
+});
