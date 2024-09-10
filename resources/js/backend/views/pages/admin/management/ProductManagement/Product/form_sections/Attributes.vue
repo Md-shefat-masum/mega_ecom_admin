@@ -6,69 +6,103 @@
             </div>
             <div class="col-md-12">
                 <label>
-                    Category
+                    Category 
+                    <span class="text-danger">*</span>
                 </label>
-                <categoryDropDown :name="'categories'" :multiple="true"/>
+                <div>
+                    <categoryDropDown :name="'categories'" :multiple="true"/>
+                </div>
             </div>
             <div class="col-md-4">
                 <label>
-                    Category Group
+                    Product Type 
+                    <span class="text-danger">*</span>
                 </label>
-                <CategoryGroupDropDown :name="`product_category_group_id`" />
+                <div>
+                    <CategoryGroupDropDown :name="`product_category_group_id`" :multiple="false" />
+                </div>
             </div>
             <div class="col-md-4">
                 <label>
                     Brand
+                    <span class="text-danger">*</span>
                 </label>
-                <BrandDropDown :name="`product_brand_id`" />
+                <div class="no_pagination">
+                    <BrandDropDown :name="`product_brand_id`" :multiple="false" />
+                </div>
             </div>
             <div class="col-md-4">
                 <label>
                     Unit
+                    <span class="text-danger">*</span>
                 </label>
-                <UnitDropDown :name="`product_unit_id`" />
+                <div>
+                    <select name="unit_id" class="form-control">
+                        <option value="">--select unit--</option>
+                        <option v-for="unit in units" :key="unit.id">
+                            {{ unit.title }}
+                        </option>
+                    </select>
+                </div>
+                <!-- <UnitDropDown :name="`product_unit_id`" /> -->
             </div>
             <div class="col-md-4">
                 <label>
                     Manufacturer
                 </label>
-                <ManufactureDropDown :name="`product_menufecturer_id`"/>
+                <div class="no_pagination">
+                    <ManufactureDropDown :name="`product_menufecturer_id`" :multiple="false"/>
+                </div>
             </div>
             <div class="col-md-4">
                 <label>
                     SKU
                 </label>
-                <input type="text" class="form-control">
+                <div>
+                    <input type="text" name="sku" class="form-control">
+                </div>
             </div>
             <div class="col-md-4">
                 <label>
                     Barcode
+                    <span class="text-danger">*</span>
                 </label>
-                <input type="text" class="form-control">
+                <div>
+                    <input type="text" name="barcode" class="form-control">
+                </div>
             </div>
             <div class="col-md-4">
                 <label>
                     Weight (kg)
                 </label>
-                <input type="text" class="form-control">
+                <div>
+                    <input type="text" name="weight" class="form-control">
+                </div>
             </div>
             <div class="col-md-4">
                 <label>
-                    Height (inc)
+                    Height (in)
                 </label>
-                <input type="text" class="form-control">
+                <div>
+                    <input type="text" name="height" class="form-control">
+                </div>
             </div>
             <div class="col-md-4">
                 <label>
                     Alert Quantity
+                    <span class="text-danger">*</span>
                 </label>
-                <input type="text" class="form-control">
+                <div>
+                    <input type="text" name="alert_qty" class="form-control">
+                </div>
             </div>
             <div class="col-md-4">
                 <label>
                     Seller Point
                 </label>
-                <input type="text" class="form-control">
+                <div>
+                    <input type="text" name="seller_point" class="form-control">
+                </div>
             </div>
 
         </div>
@@ -87,6 +121,15 @@ export default {
         UnitDropDown,
         ManufactureDropDown,
         CategoryGroupDropDown,
+    },
+    data: ()=>({
+        units: [],
+    }),
+    mounted: function(){
+        axios.get('/all-product-units')
+            .then(res=>{
+                this.units = res.data;
+            })
     }
 }
 </script>
