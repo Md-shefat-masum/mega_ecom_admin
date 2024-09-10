@@ -29,7 +29,7 @@
     <script src="{{('/cache/backend/assets/js/pace.min.js') }}"></script>
     <script src="/cache/plugins/sweet_alert.js" defer></script>
     <script src="/cache/backend/assets/js/jquery.min.js"></script>
-    <script src="http://localhost:8098"></script>
+    {{-- <script src="http://localhost:8098"></script> --}}
 </head>
 
 <body class="bg-theme bg-theme9" id="body">
@@ -48,8 +48,6 @@
     <script src="/cache/backend/assets/js/JsBarcode.all.min.js"></script>
     <script src="/cache/backend/assets/js/jQuery.print.min.js"></script>
     @vite(['resources/js/backend/app.js'])
-
-    <script src="http://localhost:8098"></script>
 </body>
 
 </html>
