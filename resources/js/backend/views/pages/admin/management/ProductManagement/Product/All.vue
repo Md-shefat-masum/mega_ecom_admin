@@ -21,7 +21,8 @@
                                         <th> Code </th>
                                         <th> Categories </th>
                                         <th> Brand </th>
-                                        <th> Sales Price </th>
+                                        <th> Customer Sales Price </th>
+                                        <th> Retailer Sales Price </th>
                                         <th> Stock </th>
                                         <th> status </th>
                                     </tr>
@@ -58,13 +59,16 @@
                                             {{ item.product_brand?.title }}
                                         </td>
                                         <td>
-                                            {{ item.current_price }}
+                                            {{ item.customer_sales_price }}
+                                        </td>
+                                        <td>
+                                            {{ item.retailer_sales_price }}
                                         </td>
                                         <td>
                                             {{ item.stock }}
                                         </td>
                                         <td>
-                                            {{ item.is_available ? 'avaiable' : 'stockout' }}
+                                            {{ item.stock >= item.alert_quantity ? 'avaiable' : 'stockout' }}
                                         </td>
 
                                     </tr>

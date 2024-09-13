@@ -8,7 +8,7 @@ let app_config : app_config_type = {
     // api_host: location.origin,
     api_host: "http://127.0.0.1:8004",
     // api_host: "https://etek.shefat.info",
-    image_host: "http://127.0.0.1:8005",
+    image_host: "http://127.0.0.1:8004",
     api_version: 'api/v1'
 }
 

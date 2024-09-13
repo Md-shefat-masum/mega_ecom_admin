@@ -101,12 +101,17 @@ export default {
             if(!this.multiple){
                 this.selected = [item];
                 return;
+            } else if(this.multiple && !event) {
+                this.selected.push(item);
+                return;
             }
 
-            if (event.target.checked) {
-                this.selected.push(item);
-            } else {
-                this.selected = this.selected.filter(i => i.id != item.id);
+            if(event){
+                if (event?.target?.checked) {
+                    this.selected.push(item);
+                } else {
+                    this.selected = this.selected.filter(i => i.id != item.id);
+                }
             }
         },
         is_selected: function (item) {

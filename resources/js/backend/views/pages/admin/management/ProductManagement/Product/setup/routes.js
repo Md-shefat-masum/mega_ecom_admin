@@ -1,6 +1,7 @@
 import setup from ".";
 import All from "../All.vue";
 import Form from "../Form.vue";
+import Edit from "../Edit.vue";
 import Details from "../Details.vue";
 import Layout from "../Layout.vue";
 import CatList from "../CatList.vue";
@@ -35,7 +36,7 @@ const routes =
         {
             path: "edit/:id",
             name: "Edit" + route_prefix,
-            component: Form,
+            component: Edit,
         },
 
     ]

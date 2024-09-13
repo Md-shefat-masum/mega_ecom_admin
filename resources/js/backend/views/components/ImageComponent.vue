@@ -19,9 +19,6 @@
                 object-fit: contain;" alt="image" target="_black" class="border">
             </div>
         </template>
-
-
-
     </div>
 </template>
 
@@ -46,6 +43,10 @@ export default {
             default: [],
             required: false,
         },
+        value: {
+            default: null,
+            required: false,
+        },
 
     },
     data: () => ({
@@ -62,7 +63,7 @@ export default {
     methods: {
         preview: function () {
             let that = this;
-            console.log("image", that)
+            // console.log("image", that)
             that.component_images = [];
             that.value = null;
             [...that.$refs.input_files.files].forEach(el => {

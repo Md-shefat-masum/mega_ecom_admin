@@ -4,7 +4,7 @@
             <div class="col-12">
                 <h4>Inventory</h4>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" v-if="type != 'edit'">
                 <label>
                     Warehouse
                 </label>
@@ -12,7 +12,7 @@
                     <WeareHouseDropdown name="wear_house_id"/>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" v-if="type != 'edit'">
                 <label for="openning_stock">
                     Opening Stock
                 </label>
@@ -42,6 +42,9 @@
 <script>
 import WeareHouseDropdown from "../../../Inventory/wearhouse/components/dropdown/DropDownEl.vue"
 export default {
+    props: [
+        'type'
+    ],
     components: {
         WeareHouseDropdown,
     }

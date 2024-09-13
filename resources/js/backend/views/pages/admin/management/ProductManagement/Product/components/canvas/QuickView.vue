@@ -15,7 +15,9 @@
                             <th></th>
                             <th></th>
                             <th>
-                                <img v-if="item.image" :src="load_image(item.image)" alt="" style="height: 130px;">
+                                <img v-if="item.product_image?.url" 
+                                    :src="load_image(item.product_image?.url)" alt="" 
+                                    style="height: 130px;">
                             </th>
                         </tr>
                         <tr>
@@ -26,81 +28,27 @@
                             </th>
                         </tr>
                         <tr>
-                            <th>Parent</th>
+                            <th>Purchase Price</th>
                             <th>:</th>
                             <th>
-                                {{ item?.parent?.title }}
+                                {{ item?.purchase_price }}
                             </th>
                         </tr>
                         <tr>
-                            <th>Group</th>
+                            <th>Customer Sales Price</th>
                             <th>:</th>
                             <th>
-                                {{ item?.group?.title }}
+                                {{ item?.customer_sales_price }}
                             </th>
                         </tr>
                         <tr>
-                            <th>Is Featured</th>
+                            <th>Retailer Sales Price</th>
                             <th>:</th>
                             <th>
-                                <input
-                                    :checked="item.is_featured"
-                                    class="form-check-input ml-0"
-                                    type="checkbox">
+                                {{ item?.retailer_sales_price }}
                             </th>
                         </tr>
-                        <tr>
-                            <th>Is Nav</th>
-                            <th>:</th>
-                            <th>
-                                <input
-                                    :checked="item.is_nav"
-                                    class="form-check-input ml-0"
-                                    type="checkbox">
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Serial</th>
-                            <th>:</th>
-                            <th>
-                                {{ item.serial != "9999999"? item.serial : '' }}
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>total products</th>
-                            <th>:</th>
-                            <th>
-                                {{ item.total_products }}
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Search Keywords</th>
-                            <th>:</th>
-                            <th>
-                                {{ item.search_keywords }}
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Meta Title</th>
-                            <th>:</th>
-                            <th>
-                                {{ item.meta_title }}
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Meta Description</th>
-                            <th>:</th>
-                            <th>
-                                {{ item.meta_description }}
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Meta Keywords</th>
-                            <th>:</th>
-                            <th>
-                                {{ item.meta_keywords }}
-                            </th>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>

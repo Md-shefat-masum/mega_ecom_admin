@@ -10,7 +10,10 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <categoryDropDown :name="'categories'" :multiple="true"/>
+                    <categoryDropDown 
+                        :value="item?.product_categories"
+                        :name="'categories'" 
+                        :multiple="true"/>
                 </div>
             </div>
             <div class="col-md-4">
@@ -37,7 +40,10 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div class="no_pagination">
-                    <BrandDropDown :name="`product_brand_id`" :multiple="false" />
+                    <BrandDropDown 
+                        :value="item?.product_brand ? [item?.product_brand] : []"
+                        :name="`product_brand_id`" 
+                        :multiple="false" />
                 </div>
             </div>
             <div class="col-md-4">
@@ -46,7 +52,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <select name="product_unit_id" class="form-control">
+                    <select name="product_unit_id" :value="item.product_unit_id" class="form-control">
                         <option value="">--select unit--</option>
                         <option v-for="unit in units" :value="unit.id" :key="unit.id">
                             {{ unit.title }}
@@ -60,7 +66,10 @@
                     Manufacturer
                 </label>
                 <div class="no_pagination">
-                    <ManufactureDropDown :name="`product_menufecturer_id`" :multiple="false"/>
+                    <ManufactureDropDown 
+                        :value="item?.product_menufecturer? [item.product_menufecturer] : []"
+                        :name="`product_menufecturer_id`" 
+                        :multiple="false"/>
                 </div>
             </div>
             <div class="col-md-4">
@@ -123,6 +132,8 @@ import BrandDropDown from "../../Brand/components/dropdown/DropDownEl.vue"
 import UnitDropDown from "../../Unit/components/dropdown/DropDownEl.vue"
 import ManufactureDropDown from "../../Manufacture/components/dropdown/DropDownEl.vue"
 import CategoryGroupDropDown from "../../CategoryGroup/components/dropdown/DropDownEl.vue"
+import { mapState } from 'pinia'
+import {store} from '../setup/store'
 export default {
     components: {
         categoryDropDown,
@@ -139,6 +150,12 @@ export default {
             .then(res=>{
                 this.units = res.data;
             })
+    },
+    computed: {
+        ...mapState(store, {
+            item: "item",
+            is_loading: 'is_loading',
+        }),
     }
 }
 </script>

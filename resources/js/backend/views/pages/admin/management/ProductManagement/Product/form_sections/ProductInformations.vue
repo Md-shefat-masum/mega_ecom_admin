@@ -38,7 +38,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <image-component name="thumb_image"/>
+                    <image-component name="thumb_image" :value="item?.product_image?.url"/>
                 </div>
             </div>
         </div>
@@ -48,13 +48,15 @@
                     Additional Image {{ i }}
                 </label>
                 <div>
-                    <image-component :name="`additional_image_${i}`"/>
+                    <image-component :value="get_related_image(i)" :name="`additional_image_${i}`"/>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import { mapState } from 'pinia';
+import { store } from '../setup/store'
 export default {
     data: () => ({
         title: '',
@@ -70,8 +72,20 @@ export default {
                 .replace(/\s+/g, '-');
             this.slug = url;
             this.search_keywords = str;
-
+        },
+        get_related_image: function(index){
+            try {
+                return this.item.product_images[index].url;
+            } catch (error) {
+                return null;
+            }
         }
+    },
+    computed: {
+        ...mapState(store, {
+            item: "item",
+            is_loading: 'is_loading',
+        }),
     }
 }
 </script>
