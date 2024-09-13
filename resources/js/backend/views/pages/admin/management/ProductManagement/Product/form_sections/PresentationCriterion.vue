@@ -6,24 +6,24 @@
             </div>
             <div class="col-md-3">
                 <div class="pl-4">
-                    <input type="checkbox" name="is_available_in_e_commerce" id="is_available_in_e_commerce" class="form-check-input">
-                    <label class="ml-2" for="is_available_in_e_commerce">
+                    <input type="checkbox" name="is_available" id="is_available" class="form-check-input">
+                    <label class="ml-2" for="is_available">
                         Available in E-commerce
                     </label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="pl-4">
-                    <input type="checkbox" name="is_feature_in_home_page" id="is_feature_in_home_page" class="form-check-input">
-                    <label class="ml-2" for="is_feature_in_home_page">
+                    <input type="checkbox" name="is_featured" id="is_featured" class="form-check-input">
+                    <label class="ml-2" for="is_featured">
                         Feature on Home Page
                     </label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="pl-4">
-                    <input type="checkbox" name="is_new_product" id="is_new_product" class="form-check-input">
-                    <label class="ml-2" for="is_new_product">
+                    <input type="checkbox" name="is_new" id="is_new" class="form-check-input">
+                    <label class="ml-2" for="is_new">
                         Mark as New
                     </label>
                 </div>
@@ -54,8 +54,8 @@
             </div>
             <div class="col-md-3">
                 <div class="pl-4">
-                    <input type="checkbox" name="is_upcomming" id="is_upcomming" class="form-check-input">
-                    <label class="ml-2" for="is_upcomming">
+                    <input type="checkbox" name="is_up_coming" id="is_up_coming" class="form-check-input">
+                    <label class="ml-2" for="is_up_coming">
                         Mark as Upcomming
                     </label>
                 </div>
@@ -73,6 +73,22 @@
                     <input type="checkbox" name="is_returnable" id="is_returnable" class="form-check-input">
                     <label class="ml-2" for="is_returnable">
                         Is Returnable
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pl-4">
+                    <input type="checkbox" name="is_hide" id="is_hide" class="form-check-input">
+                    <label class="ml-2" for="is_hide">
+                        Hide Product From Website
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="pl-4">
+                    <input type="checkbox" checked name="active" id="active" class="form-check-input">
+                    <label class="ml-2" for="active">
+                        Make Product As Deactive / Active
                     </label>
                 </div>
             </div>

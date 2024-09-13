@@ -43,26 +43,50 @@ export default {
     data: () => ({
         discount_type: 'off',
         discount_amount: 0,
+        retailer_discount_price: 0,
+        customer_discount_price: 0,
     }),
-    computed: {
-        retailer_discount_price: function () {
-            let retailer_price = + document.getElementById('retailer_sales_price').value;
-            if (this.discount_type == 'flat') {
-                return retailer_price - this.discount_amount;
-            } else if (this.discount_type == 'percent') {
-                return retailer_price - (retailer_price * this.discount_amount / 100);
-            } else {
-                return retailer_price;
+    created: function(){
+        this.$watch('discount_amount',function(){
+            this.retailer_discount_price = this.get_retailer_discount_price();
+            this.customer_discount_price = this.get_customer_discount_price();
+        })
+    },
+    methods: {
+        get_retailer_discount_price: function () {
+            try{
+                let retailer_el = document.getElementById('retailer_sales_price');
+                if(retailer_el){
+                    let retailer_price = +retailer_el.value;
+                    console.log(retailer_price);
+
+                    if (this.discount_type == 'flat') {
+                        return retailer_price - this.discount_amount;
+                    } else if (this.discount_type == 'percent') {
+                        return retailer_price - (retailer_price * this.discount_amount / 100);
+                    } else {
+                        return retailer_price;
+                    }
+                }
+            }catch(e){
+                console.log(e);
             }
         },
-        customer_discount_price: function () {
-            let customer_price = + document.getElementById('customer_sales_price').value;
-            if (this.discount_type == 'flat') {
-                return customer_price - this.discount_amount;
-            } else if (this.discount_type == 'percent') {
-                return customer_price - (customer_price * this.discount_amount / 100);
-            } else {
-                return customer_price;
+        get_customer_discount_price: function () {
+            try{
+                let customer_el = document.getElementById('customer_sales_price');
+                if(customer_el){
+                    let customer_price = + customer_el.value;
+                    if (this.discount_type == 'flat') {
+                        return customer_price - this.discount_amount;
+                    } else if (this.discount_type == 'percent') {
+                        return customer_price - (customer_price * this.discount_amount / 100);
+                    } else {
+                        return customer_price;
+                    }
+                }
+            }catch(e){
+                console.log(e);
             }
         },
     }

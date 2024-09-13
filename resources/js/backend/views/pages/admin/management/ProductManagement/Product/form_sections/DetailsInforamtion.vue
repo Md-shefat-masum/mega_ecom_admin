@@ -5,10 +5,10 @@
                 <h4>Details Informations</h4>
             </div>
             <div class="col-md-12">
-                <label>
+                <label for="video_url">
                     Video URL
                 </label>
-                <input type="text" class="form-control">
+                <input type="text" name="video_url" id="video_url" class="form-control">
             </div>
             <div class="col-md-12">
                 <label>
@@ -17,7 +17,7 @@
                 <div class="mt-1 mb-3">
                     <text-editor :set_value="set_value" :data_store="`product_description`" />
                     <div class="text_output" v-html="product_description"></div>
-                    <textarea class="d-none" name="product_description"
+                    <textarea class="d-none" name="description"
                         :value="product_description"></textarea>
                 </div>
             </div>

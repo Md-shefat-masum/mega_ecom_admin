@@ -56,6 +56,7 @@ let execute = async () => {
 
     state.select_fields.get().forEach(function(el, index){
         full_url.searchParams.set(`fields[${index}]`, el);
+        full_url.searchParams.set(`selected_fields[${index}]`, el);
     });
 
     let index = 0;

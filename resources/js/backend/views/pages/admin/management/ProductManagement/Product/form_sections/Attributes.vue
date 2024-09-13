@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-12">
                 <label>
-                    Category 
+                    Category
                     <span class="text-danger">*</span>
                 </label>
                 <div>
@@ -15,11 +15,20 @@
             </div>
             <div class="col-md-4">
                 <label>
-                    Product Type 
+                    Product Type
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <CategoryGroupDropDown :name="`product_category_group_id`" :multiple="false" />
+                    <select name="product_category_group_id" class="form-control">
+                        <option value="">--select product type--</option>
+                        <option value="3">
+                            ইলেক্ট্রনিক্স ও যন্ত্রপাতি
+                        </option>
+                        <option value="1">
+                            মেডিসিন
+                        </option>
+                    </select>
+                    <!-- <CategoryGroupDropDown :name="`product_category_group_id`" :multiple="false" /> -->
                 </div>
             </div>
             <div class="col-md-4">
@@ -37,9 +46,9 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <select name="unit_id" class="form-control">
+                    <select name="product_unit_id" class="form-control">
                         <option value="">--select unit--</option>
-                        <option v-for="unit in units" :key="unit.id">
+                        <option v-for="unit in units" :value="unit.id" :key="unit.id">
                             {{ unit.title }}
                         </option>
                     </select>
@@ -93,7 +102,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <input type="text" name="alert_qty" class="form-control">
+                    <input type="text" name="alert_quantity" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
@@ -101,7 +110,7 @@
                     Seller Point
                 </label>
                 <div>
-                    <input type="text" name="seller_point" class="form-control">
+                    <input type="text" name="seller_points" class="form-control">
                 </div>
             </div>
 

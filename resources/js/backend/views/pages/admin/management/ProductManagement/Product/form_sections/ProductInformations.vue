@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-12">
                 <label>
-                    Product Name 
+                    Product Name
                     <span class="text-danger">*</span>
                 </label>
                 <div>
@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-12">
                 <label>
-                    Product URL 
+                    Product URL
                     <span class="text-danger">*</span>
                 </label>
                 <div>
@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-12">
                 <label>
-                    Search Keywords 
+                    Search Keywords
                     <span class="text-danger">*</span>
                 </label>
                 <div>
@@ -34,11 +34,21 @@
 
             <div class="col-md-4">
                 <label>
-                    Thumbnail Image 
+                    Thumbnail Image
                     <span class="text-danger">*</span>
                 </label>
                 <div>
                     <image-component name="thumb_image"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" v-for="i in 6">
+                <label>
+                    Additional Image {{ i }}
+                </label>
+                <div>
+                    <image-component :name="`additional_image_${i}`"/>
                 </div>
             </div>
         </div>

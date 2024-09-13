@@ -7,7 +7,7 @@
             <button type="button" @click="()=>(is_modify = false)" v-if="is_modify" class="btn btn-info btn-sm ml-3">Save</button>
             <button type="button" @click="()=>(is_modify = true)"  v-else class="btn btn-warning btn-sm ml-3">Modify</button>
         </div>
-        <table class="table" v-if="is_modify">
+        <table class="table" v-show="is_modify">
             <thead>
                 <tr>
                     <td></td>
@@ -20,12 +20,12 @@
                     <tr>
                         <th colspan="3">
                             <div class="d-flex align-items-start">
-                                <i @click="remove(index)" 
+                                <i @click="remove(index)"
                                     class="fa fa-trash btn btn-sm btn-outline-danger mr-4"></i>
-                                
-                                <input 
+
+                                <input
                                     :name="`specification[${index}][heading]`"
-                                    v-model="item.heading" 
+                                    v-model="item.heading"
                                     type="text" class="ml-4 form-control flex-fill" />
                             </div>
                         </th>
@@ -35,15 +35,15 @@
                             <i @click="remove_sub_menu(index, value_index)" v-if="item.values.length > 1" class="fa fa-trash btn btn-sm btn-outline-danger"></i>
                         </td>
                         <td style="width: 300px;">
-                            <input type="text" placeholder="eg: color" 
-                                :name="`specification[${index}][values][${value_index}][key]`" 
-                                v-model="value.key" 
+                            <input type="text" placeholder="eg: color"
+                                :name="`specification[${index}][values][${value_index}][key]`"
+                                v-model="value.key"
                                 class="form-control">
                         </td>
                         <td>
-                            <input type="text" placeholder="eg: red" 
-                                :name="`specification[${index}][values][${value_index}][value]`" 
-                                v-model="value.value" 
+                            <input type="text" placeholder="eg: red"
+                                :name="`specification[${index}][values][${value_index}][value]`"
+                                v-model="value.value"
                                 class="form-control">
                         </td>
                     </tr>
@@ -69,7 +69,7 @@
             </tbody>
         </table>
 
-        <table class="table" v-else>
+        <table class="table" v-show="!is_modify">
             <tbody>
                 <template v-for="(item, index) in specifications" :key="index">
                     <tr>
@@ -78,7 +78,7 @@
                         </th>
                     </tr>
                     <tr v-for="(value, value_index) in item.values" :key="value_index">
-                        
+
                         <td style="width: 300px;">
                             {{ value.key }}
                         </td>

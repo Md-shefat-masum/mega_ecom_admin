@@ -135,12 +135,12 @@ function get_product_json()
  */
 function insertProduct($data)
 {
-    $product = DB::table('products')->where('id', $data['id'])->first();
-    if ($product) {
-        return $product->id;
-    } else {
-        return DB::table('products')->insertGetId($data);
-    }
+    // $product = DB::table('products')->where('id', $data['id'])->first();
+    // if ($product) {
+    //     return $product->id;
+    // } else {
+    //     return DB::table('products')->insertGetId($data);
+    // }
 }
 
 function create_slug($url)

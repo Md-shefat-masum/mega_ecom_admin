@@ -37,16 +37,16 @@
                 </label>
                 <input type="text" v-model="price.tax_amount" name="tax_amount" id="tax_amount" class="form-control">
             </div>
-            
+
             <div class="col-md-4">
                 <label for="profit_margin_percent">
                     Profit Margin(%)
                     <span class="text-danger">*</span>
                 </label>
-                <input type="text" 
+                <input type="text"
                     v-model="price.profit_margin_percent"
-                    name="profit_margin_percent" 
-                    id="profit_margin_percent" 
+                    name="profit_margin_percent"
+                    id="profit_margin_percent"
                     class="form-control">
             </div>
 
@@ -54,8 +54,8 @@
                 <label>
                     Product Price
                 </label>
-                <input type="text" 
-                    :value="product_price" 
+                <input type="text"
+                    :value="product_price"
                     name="product_price" id="product_price" class="form-control">
             </div>
 

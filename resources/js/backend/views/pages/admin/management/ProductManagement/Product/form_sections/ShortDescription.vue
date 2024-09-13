@@ -8,7 +8,7 @@
             <button type="button" @click="()=>(is_modify = true)"  v-else class="btn btn-warning btn-sm ml-3">Modify</button>
         </div>
         <div>
-            <table class="table" v-if="is_modify">
+            <table class="table" v-show="is_modify">
                 <thead class="text-center bg-secondary">
                     <tr>
                         <td></td>
@@ -23,15 +23,15 @@
                                 class="fa fa-trash btn btn-sm btn-outline-danger"></i>
                         </td>
                         <td style="width: 300px;">
-                            <input type="text" placeholder="eg: color" 
+                            <input type="text" placeholder="eg: color"
                                 v-model="i.key"
-                                :name="`specification[${index}][key]`" 
+                                :name="`short_description[${index}][key]`"
                                 class="form-control">
                         </td>
                         <td>
-                            <input type="text" placeholder="eg: red" 
+                            <input type="text" placeholder="eg: red"
                                 v-model="i.value"
-                                :name="`specification[${index}][value]`" 
+                                :name="`short_description[${index}][value]`"
                                 class="form-control">
                         </td>
                     </tr>
@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <td colspan="3" class="text-center">
-                            <button type="button" @click="()=>(is_modify = false)" v-if="is_modify" 
+                            <button type="button" @click="()=>(is_modify = false)" v-if="is_modify"
                                 class="btn btn-success btn-sm ml-3">
                                 Save short description
                             </button>
@@ -50,8 +50,8 @@
                     </tr>
                 </tbody>
             </table>
-            
-            <table v-else class="table">
+
+            <table v-show="!is_modify" class="table">
                 <tbody>
                     <tr v-for="(point, index) in description_points" :key="index">
                         <td style="width: 200px;">{{ point.key }}</td>
