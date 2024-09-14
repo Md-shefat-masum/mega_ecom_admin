@@ -17,7 +17,15 @@ include_once  base_path("app/Modules/FileUploader/Route.php");
 |--------------------------------------------------------------------------
 */
 include_once  base_path("app/Modules/UserManagement/User/Route.php");
+include_once  base_path("app/Modules/UserManagement/UserCustomerType/Route.php");
+include_once  base_path("app/Modules/UserManagement/UserPermission/Route.php");
+include_once  base_path("app/Modules/UserManagement/UserRetailerType/Route.php");
+include_once  base_path("app/Modules/UserManagement/UserRole/Route.php");
+include_once  base_path("app/Modules/UserManagement/UserSupplierType/Route.php");
+
 /*
+
+
 |--------------------------------------------------------------------------
 | Product management Routes
 |--------------------------------------------------------------------------
@@ -89,8 +97,6 @@ include_once  base_path("app/Modules/BannerManagement/HomeSideBanner/Route.php")
 
 /*
 |--------------------------------------------------------------------------
-| Website and Mobile api  Routes
-| Website and Mobile api  Routes
 | Website and Mobile api  Routes
 |--------------------------------------------------------------------------
 app/Modules/WebsiteApi/SliderAndBanner/Route.php
