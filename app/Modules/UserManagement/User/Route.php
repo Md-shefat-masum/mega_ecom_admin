@@ -40,10 +40,7 @@ Route::prefix('v1')->middleware('auth:api')->group(function () {
 
     Route::prefix('suppliers')->group(function () {
         Route::get('/', [SupplierController::class, 'index']);
-        // Route::post('store', [SupplierController::class, 'store']);
-        Route::post('store', function(){
-            dd(request()->all());
-        });
+        Route::post('store', [SupplierController::class, 'store']);
         Route::post('update/{id}', [SupplierController::class, 'update']);
         Route::post('soft-delete', [SupplierController::class, 'softDelete']);
         Route::post('destroy', [SupplierController::class, 'destroy']);
@@ -55,7 +52,6 @@ Route::prefix('v1')->middleware('auth:api')->group(function () {
 
     Route::prefix('retailers')->group(function () {
         Route::get('/', [RetailerController::class, 'index']);
-        Route::get('{slug}', [RetailerController::class, 'show']);
         Route::post('store', [RetailerController::class, 'store']);
         Route::post('update/{id}', [RetailerController::class, 'update']);
         Route::post('soft-delete', [RetailerController::class, 'softDelete']);
@@ -63,11 +59,11 @@ Route::prefix('v1')->middleware('auth:api')->group(function () {
         Route::post('restore', [RetailerController::class, 'restore']);
         Route::post('import', [RetailerController::class, 'import']);
         Route::post('bulk-actions', [RetailerController::class, 'bulkAction']);
+        Route::get('{slug}', [RetailerController::class, 'show']);
     });
 
     Route::prefix('employee')->group(function () {
         Route::get('/', [EmployeeController::class, 'index']);
-        Route::get('{slug}', [EmployeeController::class, 'show']);
         Route::post('store', [EmployeeController::class, 'store']);
         Route::post('update/{id}', [EmployeeController::class, 'update']);
         Route::post('soft-delete', [EmployeeController::class, 'softDelete']);
@@ -75,5 +71,6 @@ Route::prefix('v1')->middleware('auth:api')->group(function () {
         Route::post('restore', [EmployeeController::class, 'restore']);
         Route::post('import', [EmployeeController::class, 'import']);
         Route::post('bulk-actions', [EmployeeController::class, 'bulkAction']);
+        Route::get('{slug}', [EmployeeController::class, 'show']);
     });
 });
