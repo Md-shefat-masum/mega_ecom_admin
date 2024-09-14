@@ -47,7 +47,24 @@ import BarcodeGenerator from "./management/ProductManagement/Barcode/BarcodeGene
 // import configuration_routes from "./management/Configuration/setup/routes"
 import report_routes from "./management/Report/setup/routes"
 
+// import ecommer_order_routes from "./management/Ecommerce/Order/setup/routes"
+// eCommerce management routes start
 import ecommer_order_routes from "./management/Ecommerce/Order/setup/routes"
+import customer_wishlist_routes from "./management/Ecommerce/CustomerWishlist/setup/routes"
+import home_banner_routes from "./management/Ecommerce/Banner/setup/routes"
+import home_side_banner_routes from "./management/Ecommerce/SideBanner/setup/routes"
+import blog_category_routes from "./management/Ecommerce/BlogCategory/setup/routes"
+import blog_routes from "./management/Ecommerce/Blog/setup/routes"
+import contact_us_routes from "./management/Ecommerce/ContactUs/setup/routes"
+import subscribers_routes from "./management/Ecommerce/Subscribers/setup/routes"
+import website_pages_routes from "./management/Ecommerce/Pages/route"
+import faq_routes from "./management/Ecommerce/Faq/setup/routes"
+import promo_code_routes from "./management/Ecommerce/PromoCode/setup/routes"
+import product_faq_routes from "./management/Ecommerce/ProductFAQ/setup/routes"
+import general_seo_routes from "./management/Ecommerce/GeneralSeo/setup/routes"
+import offers_routes from "./management/Ecommerce/Offer/setup/routes"
+import ecommerce_order_routes from "./management/Ecommerce/SalesOrder/setup/routes"
+// eCommerce management routes end
 
 const routes = {
     path: '',
@@ -122,7 +139,23 @@ const routes = {
         // configuration_routes,
         report_routes,
 
+        // eCommerce management start
         ecommer_order_routes,
+        customer_wishlist_routes,
+        home_banner_routes,
+        home_side_banner_routes,
+        blog_category_routes,
+        blog_routes,
+        contact_us_routes,
+        subscribers_routes,
+        website_pages_routes,
+        faq_routes,
+        promo_code_routes,
+        product_faq_routes,
+        general_seo_routes,
+        offers_routes,
+        ecommerce_order_routes,
+        // eCommerce management end
     ]
 };
 
