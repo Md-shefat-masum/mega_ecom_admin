@@ -46,6 +46,8 @@ include_once  base_path("app/Modules/ProductManagement/ProductVarientGroup/Route
 include_once  base_path("app/Modules/ProductManagement/ProductVarientValue/Route.php");
 
 include_once  base_path("app/Modules/ProductManagement/Product/Route.php");
+include_once  base_path("app/Modules/ProductManagement/ProductFaq/Route.php");
+include_once  base_path("app/Modules/ProductManagement/ProductOffer/Route.php");
 /*
 |--------------------------------------------------------------------------
 | Location management Routes
@@ -55,6 +57,26 @@ include_once  base_path("app/Modules/LocationManagement/Country/Route.php");
 include_once  base_path("app/Modules/LocationManagement/StateDivision/Route.php");
 include_once  base_path("app/Modules/LocationManagement/District/Route.php");
 include_once  base_path("app/Modules/LocationManagement/Station/Route.php");
+
+
+/*
+|--------------------------------------------------------------------------
+| Ecommerce management Routes
+|--------------------------------------------------------------------------
+*/
+include_once  base_path("app/Modules/Ecommerce/CustomerWishlist/Route.php");
+include_once  base_path("app/Modules/Ecommerce/Faq/Route.php");
+include_once  base_path("app/Modules/Ecommerce/PromoCode/Route.php");
+include_once  base_path("app/Modules/Ecommerce/GeneralSeo/Route.php");
+/*
+|--------------------------------------------------------------------------
+| Configuration management Routes
+|--------------------------------------------------------------------------
+*/
+include_once  base_path("app/Modules/ConfigurationManagement/WebsiteConfiguration/Route.php");
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Purchage management Routes
@@ -120,3 +142,18 @@ include_once  base_path("app/Modules/WebsiteApi/ProductQuestion/Route.php");
 
 include_once  base_path("app/Modules/TagManagement/ProductTag/Route.php");
 include_once  base_path("app/Modules/TagManagement/ProductCategoryTag/Route.php");
+
+
+/*
+|--------------------------------------------------------------------------
+| Blog management and Mobile api  Routes
+|--------------------------------------------------------------------------
+*/
+include_once  base_path("app/Modules/BlogManagement/BlogCategory/Route.php");
+include_once  base_path("app/Modules/BlogManagement/Blog/Route.php");
+/*
+|--------------------------------------------------------------------------
+|Subscriber api  Routes
+|--------------------------------------------------------------------------
+*/
+include_once  base_path("app/Modules/Subscriber/Route.php");
