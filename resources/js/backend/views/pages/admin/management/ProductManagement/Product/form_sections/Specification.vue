@@ -92,6 +92,8 @@
     </div>
 </template>
 <script>
+import { mapState } from 'pinia';
+import {store} from '../setup/store';
 export default {
     data: () => ({
         specifications: [],
@@ -100,6 +102,13 @@ export default {
     created: function () {
         this.add();
         this.add();
+    },
+    watch: {
+        'item': {
+            handler: function(v){
+                this.specifications= this.get_json(v.specification);
+            }
+        }
     },
     methods: {
         add: function () {
@@ -129,6 +138,19 @@ export default {
         remove_sub_menu: function (index, value_index) {
             this.specifications[index].values.splice(value_index, 1);
         },
+        get_json: function(data){
+            try {
+                return JSON.parse(data)
+            } catch (error) {
+                return data
+            }
+        }
+    },
+    computed: {
+        ...mapState(store, {
+            item: "item",
+            is_loading: 'is_loading',
+        }),
     }
 
 }

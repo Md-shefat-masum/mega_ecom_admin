@@ -175,83 +175,93 @@
             <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_ecommerce.png`"
                 :icon="`fa fa-plus`" :menu_title="`e-Commerce`" :menus="[
                     {
-                        route_name: `AllEcommerceOrders`,
+                        route_name: `Allelectronics_sales_order`,
                         title: `Orders`,
                     },
+
                     {
-                        route_name: `AllBlog`,
-                        title: `Customers`,
-                    },
-                    {
-                        route_name: `AllBlog`,
+                        route_name: `Allcustomer_wishlists`,
                         title: `Customer Wishlist`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `Allbanner`,
                         title: `Banner`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `Allside_banner`,
+                        title: `Side Banner`,
+                    },
+                    {
+                        route_name: `Allblog_categories`,
+                        title: `Blog Categories`,
+                    },
+                    {
+                        route_name: `Allblog`,
                         title: `Blog`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `Allcontact_us`,
                         title: `Contact Us`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `Allsubscribers`,
                         title: `Subscribers`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `TermsAndCondition`,
                         title: `Terms and Condition`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `ReturnPolicy`,
                         title: `Return Policy`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `ShipingAndDelivery`,
                         title: `Shipping and Delivery`,
                     },
+
                     {
-                        route_name: `AllBlog`,
-                        title: `Integrations`,
-                    },
-                    {
-                        route_name: `AllBlog`,
+                        route_name: `Allgeneral_seos`,
                         title: `General SEO`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `Allfaqs`,
                         title: `FAQ`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `Allproduct_faq_reply`,
+                        title: `Product FAQ reply`,
+                    },
+                    {
+                        route_name: `BreakingNews`,
                         title: `Breaking News`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `Allpromo_codes`,
                         title: `Promo Codes`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `Allproduct_offers`,
                         title: `Offers`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `OfferProduct`,
+                        title: `Discount Products`,
+                    },
+                    {
+                        route_name: `FeatureProducts`,
                         title: `Featured Products`,
                     },
                     {
-                        route_name: `AllBlog`,
-                        title: `Featured Categories`,
-                    },
-                    {
-                        route_name: `AllBlog`,
+                        route_name: `HideProducts`,
                         title: `Hide Products`,
                     },
                     {
-                        route_name: `AllBlog`,
+                        route_name: `FeatureCategory`,
+                        title: `Featured Categories`,
+                    },
+                    {
+                        route_name: `HideCategory`,
                         title: `Hide Categories`,
                     },
                 ]" />
@@ -269,6 +279,10 @@
                     {
                         route_name: `AllStocks`,
                         title: `Stocks`,
+                    },
+                    {
+                        route_name: `ProductPurchase`,
+                        title: `New Purchase`,
                     },
                 ]" />
 

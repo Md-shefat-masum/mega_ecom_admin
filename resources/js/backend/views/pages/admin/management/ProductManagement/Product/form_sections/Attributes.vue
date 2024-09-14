@@ -10,9 +10,9 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <categoryDropDown 
+                    <categoryDropDown
                         :value="item?.product_categories"
-                        :name="'categories'" 
+                        :name="'categories'"
                         :multiple="true"/>
                 </div>
             </div>
@@ -40,9 +40,9 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div class="no_pagination">
-                    <BrandDropDown 
+                    <BrandDropDown
                         :value="item?.product_brand ? [item?.product_brand] : []"
-                        :name="`product_brand_id`" 
+                        :name="`product_brand_id`"
                         :multiple="false" />
                 </div>
             </div>
@@ -66,9 +66,9 @@
                     Manufacturer
                 </label>
                 <div class="no_pagination">
-                    <ManufactureDropDown 
+                    <ManufactureDropDown
                         :value="item?.product_menufecturer? [item.product_menufecturer] : []"
-                        :name="`product_menufecturer_id`" 
+                        :name="`product_menufecturer_id`"
                         :multiple="false"/>
                 </div>
             </div>
@@ -145,6 +145,15 @@ export default {
     data: ()=>({
         units: [],
     }),
+    watch: {
+        'item': {
+            handler: function(v){
+                this.product_description= v.description;
+                this.warranty_policy= v.warranty_policy;
+                this.guarenty_policy= v.guarenty_policy;
+            }
+        }
+    },
     mounted: function(){
         axios.get('/all-product-units')
             .then(res=>{

@@ -228,7 +228,7 @@ export default {
         }),
         get_categories: async function(){
             let res = await this.get_all_categories();
-            this.cat_list = res.data;
+            this.cat_list = res.data.data;
         },
         reset_fields: function () {
             this.form_fields.forEach((item) => {

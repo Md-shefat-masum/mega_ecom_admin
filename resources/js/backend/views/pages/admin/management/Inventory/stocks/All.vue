@@ -16,10 +16,10 @@
                                             <select-all />
                                         </th>
                                         <th class="w-10"> ID </th>
-                                        <th> stock_type </th>
-                                        <th> product_id </th>
+                                        <th> stock type </th>
+                                        <th> product id </th>
                                         <th> qty </th>
-                                        <th> product_wearhouse_id </th>
+                                        <th> product wearhouse id </th>
                                     </tr>
                                 </thead>
                                 <tbody v-if="all?.data?.length">
@@ -40,13 +40,13 @@
                                             </quick-view-column>
                                         </td>
                                         <td>
-                                            {{ item.product_id ?? 'null' }}
+                                            {{ item?.product?.title ?? 'null' }}
                                         </td>
                                         <td>
                                             {{ item.qty ?? 'null' }}
                                         </td>
                                         <td>
-                                            {{ item.product_wearhouse_id ?? 'null' }}
+                                            {{ item?.wearhouse?.title ?? 'null' }}
                                         </td>
 
                                     </tr>

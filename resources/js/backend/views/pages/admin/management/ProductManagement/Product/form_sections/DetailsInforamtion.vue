@@ -55,6 +55,9 @@
 <script>
 import ShortDescription from './ShortDescription.vue';
 import Specification from './Specification.vue';
+import { mapState } from 'pinia';
+import {store} from '../setup/store';
+
 export default {
     components: {
         ShortDescription,
@@ -65,10 +68,25 @@ export default {
         warranty_policy: '',
         guarenty_policy: '',
     }),
+    watch: {
+        'item': {
+            handler: function(v){
+                this.product_description= v.description;
+                this.warranty_policy= v.warranty_policy;
+                this.guarenty_policy= v.guarenty_policy;
+            }
+        }
+    },
     methods: {
         set_value: function (state, value) {
             this[state] = value;
         },
+    },
+    computed: {
+        ...mapState(store, {
+            item: "item",
+            is_loading: 'is_loading',
+        }),
     }
 }
 </script>

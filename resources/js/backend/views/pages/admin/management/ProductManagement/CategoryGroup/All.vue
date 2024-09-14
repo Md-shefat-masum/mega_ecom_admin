@@ -42,7 +42,7 @@
                                             {{ item.total_products }}
                                         </td>
                                         <td>
-                                            <img v-if="item.image" :src="item.image" alt="" style="height: 30px;">
+                                            <img v-if="load_image(item.image)" :src="item.image" alt="" style="height: 30px;">
                                         </td>
                                     </tr>
                                 </tbody>

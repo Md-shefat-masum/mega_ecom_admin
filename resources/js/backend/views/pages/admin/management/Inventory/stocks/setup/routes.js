@@ -3,6 +3,7 @@ import All from "../All.vue";
 import Form from "../Form.vue";
 import Details from "../Details.vue";
 import Layout from "../Layout.vue";
+import Purchase from "../Purchase.vue";
 
 let route_prefix = setup.route_prefix;
 let route_path = setup.route_path;
@@ -21,6 +22,11 @@ const routes =
             path: "create",
             name: "Create" + route_prefix,
             component: Form,
+        },
+        {
+            path: "purchase",
+            name: "ProductPurchase",
+            component: Purchase,
         },
         {
             path: ":id",

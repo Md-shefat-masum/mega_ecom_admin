@@ -10,17 +10,9 @@ async function execute(event){
     let is_featured = form.querySelector('[name="is_featured"]');
     let serial = form.querySelector('[name="serial"]');
 
-    form_data.delete('product_category_group_id');
     form_data.delete('is_nav');
     form_data.delete('is_featured');
     form_data.delete('serial');
-
-    category_group = JSON.parse(category_group.value);
-    if(category_group.length){
-        form_data.append('product_category_group_id', category_group[0]);
-    }else{
-        form_data.append('product_category_group_id', "");
-    }
 
     if(is_nav.checked){
         form_data.append('is_nav', "1");

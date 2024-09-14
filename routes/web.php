@@ -19,6 +19,11 @@ Route::group([
 //     return view('home');
 // });
 
+Route::get('/ttt',function(){
+    $product = App\Modules\ProductManagement\Product\Models\Model::orderBy('id','desc')->first();
+    return ($product);
+});
+
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
 Auth::routes();
 

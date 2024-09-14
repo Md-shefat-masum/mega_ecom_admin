@@ -1,11 +1,28 @@
 <template>
     <div class="container">
-        <div class="card">
+        <div class="card" >
             <div class="card-header">
                 <h4>Print Labels</h4>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="min-height: 400px;">
                 <div>
+                    <div class="d-flex my-2">
+                        <label style="width: 168px">Product</label>
+                        <div class="flex-fill">
+                            <ProductDropDown :call_back="get_selected_product" :multiple="false" />
+                        </div>
+
+                    </div>
+                    <div class="d-flex gap-3 my-2">
+                        <label style="width: 200px">Company</label>
+                        <input v-model="company" class="form-control" />
+                    </div>
+                    <div class="d-flex gap-3 my-2">
+                        <label style="width: 200px">Amount</label>
+                        <input v-model="count" class="form-control" />
+                    </div>
+                </div>
+                <div class="mt-4">
                     <button class="btn btn-info mr-2" @click.prevent="generate_code">
                         generate code
                     </button>
@@ -35,12 +52,16 @@
 </template>
 
 <script>
+import ProductDropDown from "../Product/components/dropdown/DropDownEl.vue"
 export default {
+    components: {
+        ProductDropDown,
+    },
     data: ()=>({
         count: 100,
-        label: 'EL12940',
-        price: 435,
-        product: "Vention NAFB0 USB Apt-X Bluetooth 5.1 Adapter",
+        label: '',
+        price: '',
+        product: "",
         company: "ETEK Enterprise",
         show: false,
     }),
@@ -51,14 +72,16 @@ export default {
         generate_code: function () {
             this.show = true;
             try {
-                for (let index = 1; index <= this.count; index++) {
-                    JsBarcode("#barcode"+index, this.label, {
-                        format: "CODE39",
-                        lineColor: "#000",
-                        width: 1,
-                        height: 40,
-                        displayValue: false
-                    });
+                if(this.product && this.price){
+                    for (let index = 1; index <= this.count; index++) {
+                        JsBarcode("#barcode"+index, this.label, {
+                            format: "CODE39",
+                            lineColor: "#000",
+                            width: 1,
+                            height: 40,
+                            displayValue: false
+                        });
+                    }
                 }
             } catch (error) {
                 console.log(error);
@@ -66,6 +89,13 @@ export default {
         },
         print_codes: function(){
             $("#print_area").print(/*options*/);
+        },
+        get_selected_product: function(data){
+            this.product = data.title;
+            this.label = data.barcode;
+            this.price = data.customer_sales_price;
+
+            console.log(data);
         }
     }
 }

@@ -1,10 +1,10 @@
 <template lang="">
     <div class="d-flex">
-        <create />
+        <!-- <create /> -->
         <export-all />
         <export-selected />
         <trash />
-
+        
         <slot/>
     </div>
 </template>

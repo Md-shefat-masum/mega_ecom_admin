@@ -1,10 +1,10 @@
 <template lang="">
     <div class="custom_drop_down">
-        <input type="hidden" :id="name" :name="name" :value="`[${selected_ids}]`">
+        <input type="hidden" :id="name" :name="name" :value="multiple?`[${selected_ids}]`:`${selected_ids}`" />
         <div class="selected_list" @click="show_list = true">
             <div v-for="item in selected" :key="item.id" :id="item.id" class="selected_item">
                 <div class="label">
-                    {{ item.name }}
+                    {{ item.title }}
                 </div>
                 <div @click.prevent="remove_item(item)" class="remove">
                     <i class="fa fa-close"></i>
@@ -20,7 +20,7 @@
 
                 <button type="button"
                     @click.prevent="show_list = false"
-                    class="btn btn-outline-danger">
+                    class="btn btn-danger">
                     <i class="fa fa-close"></i>
                 </button>
             </div>
@@ -33,8 +33,17 @@
                                 type="checkbox" :id="`drop_item_${item.id}`"
                                 class="form-check-input ml-0">
                         </div>
-                        <div class="label">{{ item.name }}</div>
-                        <div class="label">{{ item.phone_number }}</div>
+                        <div class="label">
+                            <div class="d-flex gap-3">
+                                <img :src="load_image(item.product_image?.url)" style="height: 30px;width: 30px;" />
+                                <div class="ms-4 ml-4">
+                                    {{ item.title }} -
+                                </div>
+                                <div class="ms-4 ml-4">
+                                    {{ item.customer_sales_price }} Tk
+                                </div>
+                            </div>
+                        </div>
                     </label>
                 </li>
             </ul>
@@ -55,15 +64,32 @@ import debounce from '../../helpers/debounce';
 
 export default {
     props: {
+        multiple: {
+            type: Boolean,
+            default: false,
+        },
         name: {
             type: String,
-            default: 'users_' + (parseInt(Math.random() * 1000)),
+            default: 'products_' + (parseInt(Math.random() * 1000)),
+        },
+        value: {
+            type: Array,
+            default: [],
+        },
+        call_back: {
+            type: Function,
+            default: ()=>'',
         }
     },
     created: function () {
         if (!this.all?.data?.lenght) {
             this.get_all();
         }
+        this.$watch('value',function(v){
+            v.forEach(i=>{
+                this.set_selected(i);
+            })
+        })
     },
     data: () => ({
         selected: [],
@@ -81,13 +107,21 @@ export default {
             this.only_latest_data = true;
             await this.get_all();
             this.only_latest_data = false;
-        }, 300),
+        }, 500),
         set_selected: function (item, event) {
+            if(!this.multiple){
+                this.selected = [item];
+                this.call_back({...item});
+                return;
+            }
+
             if (event.target.checked) {
                 this.selected.push(item);
             } else {
                 this.selected = this.selected.filter(i => i.id != item.id);
             }
+
+            this.call_back(this.selected);
         },
         is_selected: function (item) {
             return this.selected.find((i) => i.id == item.id);

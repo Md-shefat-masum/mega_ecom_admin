@@ -1,12 +1,15 @@
 <template>
-    <div class="container-fluid" style="max-width: 1400px;">
-
+    <div>
         <form @submit.prevent="submitHandler">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h5 class="text-capitalize">{{ param_id ? 'Update' : 'Create' }} new {{ route_prefix }}</h5>
                     <div>
-                        <router-link class="btn btn-outline-warning btn-sm" :to="{ name: `All${route_prefix_name}` }">
+                        <router-link v-if="item.slug" class="btn btn-outline-info mr-2 btn-sm"
+                            :to="{ name: `Details${route_prefix}`, params: { id: item.slug } }">
+                            Details {{ route_prefix }}
+                        </router-link>
+                        <router-link class="btn btn-outline-warning btn-sm" :to="{ name: `All${route_prefix}` }">
                             All {{ route_prefix }}
                         </router-link>
                     </div>
@@ -14,7 +17,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="row" v-if="order" style="row-gap: 30px;">
+                            <div class="row"  style="row-gap: 30px;">
                                 <div class="col-md-4">
                                     <label>
                                         Customer Name
@@ -48,17 +51,18 @@
                                         Address
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <textarea type="text" :value="order?.address?.address" class="form-control"></textarea>
+                                    <textarea type="text" :value="order?.address?.address"
+                                        class="form-control"></textarea>
                                 </div>
                             </div>
 
-                            <hr class="my-4"/>
+                            <hr class="my-4" />
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <input type="search" class="form-control" placeholder="Search Products">
                                 </div>
                             </div>
-                            <hr class="my-4"/>
+                            <hr class="my-4" />
 
                             <div class="col-12">
                                 <div class="table-responsive">
@@ -77,32 +81,35 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="product in order.order_details" :key="product.id">
+                                            <tr v-for="product in 3" :key="product">
                                                 <td>
                                                     <i class="fa fa-trash"></i>
                                                 </td>
                                                 <td>
-                                                    {{ product.product.product_name }}
+                                                    asdfasdf
                                                 </td>
                                                 <td>
-                                                    {{ product.product_price }}
+                                                    234
                                                 </td>
                                                 <td class="text-center">
-                                                    <div style="gap: 10px;" class="d-flex justify-content-center align-items-center">
-                                                        <input :value="0" type="text" class="form-control text-center" style="max-width: 80px;">
+                                                    <div style="gap: 10px;"
+                                                        class="d-flex justify-content-center align-items-center">
+                                                        <input :value="0" type="text" class="form-control text-center"
+                                                            style="max-width: 80px;">
                                                         <span>
                                                             %
                                                         </span>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    {{ product.product_price }}
+                                                   234
                                                 </td>
                                                 <td class="text-center">
-                                                    <input :value="product.qty" type="text" class="form-control text-center" style="max-width: 80px;">
+                                                    <input :value="product.qty" type="text"
+                                                        class="form-control text-center" style="max-width: 80px;">
                                                 </td>
                                                 <td class="text-right">
-                                                    {{ product.qty * product.product_price }}
+                                                   234 * 234
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -110,27 +117,28 @@
                                             <tr>
                                                 <td colspan="5" class="border-0"></td>
                                                 <td class="border-top-md">Sub Total</td>
-                                                <td class="border-top-md">{{ order.total_price }}</td>
+                                                <td class="border-top-md">2342</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="5" class="border-0"></td>
                                                 <td>Delivery Charge</td>
                                                 <td>
-                                                    <input type="text" :value="100" class="form-control text-right" style="width: 80px;">
+                                                    <input type="text" :value="100" class="form-control text-right"
+                                                        style="width: 80px;">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="5" class="border-0"></td>
                                                 <td>Total</td>
                                                 <td class="text-info font-weight-bold">
-                                                    {{ +order.total_price + 100 }}
+                                                    234
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="5" class="border-0"></td>
                                                 <td>Paid</td>
                                                 <td class="text-warning font-weight-bold">
-                                                    {{ +order.total_price + 100 }}
+                                                   234
                                                 </td>
                                             </tr>
                                             <tr>
@@ -155,6 +163,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </form>
     </div>
@@ -162,86 +171,72 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
-import { user_setup_store } from './setup/store';
+import { store } from './setup/store';
 import setup from "./setup";
 import form_fields from "./setup/form_fields";
-import axios from 'axios';
 
 export default {
     data: () => ({
-        route_prefix: setup.route_prefix,
-        route_prefix_name: setup.route_prefix_name,
-
+        route_prefix: '',
         form_fields,
         param_id: null,
-        order: {},
     }),
     created: async function () {
-        let id = this.$route.query.id;
+        let id = this.param_id = this.$route.params.id;
+        this.route_prefix = setup.route_prefix;
 
-        axios.get('https://ctgcomputer.com/api/orders/'+id)
-            .then(res=>{
-                this.order = res.data;
-            })
-        return;
-        await this.get_all_data()
-        this.form_fields.forEach((item) => {
-            item.value = "";
-        });
+        this.reset_fields();
+
         if (id) {
-            this.param_id = id;
-            await this.get_single_data(id);
-            if (this.single_data) {
-                this.form_fields.forEach((field, index) => {
-                    Object.entries(this.single_data).forEach((value) => {
-                        if (field.name == value[0]) {
-                            this.form_fields[index].value = value[1];
-                        }
-
-
-                    });
-                });
-            }
-        } else {
-            this.form_fields.forEach((item) => {
-                item.value = "";
-            });
+            this.set_fields(id);
         }
     },
     methods: {
-        ...mapActions(user_setup_store, {
-            get_all_data: 'all',
-            get_single_data: 'get',
-            store_data: 'store',
-            update_data: 'update',
+        ...mapActions(store, {
+            create: 'create',
+            update: 'update',
+            details: 'details',
         }),
+        reset_fields: function () {
+            this.form_fields.forEach((item) => {
+                item.value = "";
+            });
+        },
+        set_fields: async function (id) {
+            this.param_id = id;
+            await this.details(id);
+            if (this.item) {
+                this.form_fields.forEach((field, index) => {
+                    Object.entries(this.item).forEach((value) => {
+                        if (field.name == value[0]) {
+                            this.form_fields[index].value = value[1];
+                        }
+                    });
+                });
+            }
+        },
 
         submitHandler: async function ($event) {
             if (this.param_id) {
-                let response = await this.update_data($event.target, this.param_id);
-                if (response.data.status === "success") {
-                    window.s_alert(response.data.message);
-                    this.$router.push({ name: `All${this.route_prefix}` });
+                let response = await this.update($event);
+                if ([200, 201].includes(response.status)) {
+                    window.s_alert("data updated");
+                    this.$router.push({ name: `Details${this.route_prefix}` });
                 }
             } else {
-                let response = await this.store_data($event.target);
-                if (response.data.status === "success") {
-                    window.s_alert(response.data.message);
+                let response = await this.create($event);
+                if ([200, 201].includes(response.status)) {
+                    window.s_alert("data created");
                     this.$router.push({ name: `All${this.route_prefix}` });
                 }
             }
         },
-
-
     },
 
     computed: {
-        ...mapState(user_setup_store, {
-            single_data: "single_data",
-            all_data: 'all_data',
+        ...mapState(store, {
+            item: "item",
         }),
     },
-
-
 }
 </script>

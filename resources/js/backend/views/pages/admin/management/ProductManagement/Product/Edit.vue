@@ -164,12 +164,6 @@ export default {
                     window.s_alert("data updated");
                     this.$router.push({ name: `Details${this.route_prefix}` });
                 }
-            } else {
-                let response = await this.create($event);
-                if ([200, 201].includes(response.status)) {
-                    window.s_alert("data created");
-                    this.$router.push({ name: `All${this.route_prefix}` });
-                }
             }
         },
     },

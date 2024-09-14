@@ -16,24 +16,10 @@
                             <table class="table quick_modal_table">
                                 <tbody>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Title</th>
                                         <th>:</th>
                                         <th>
-                                            {{ item.name }}
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>Email</th>
-                                        <th>:</th>
-                                        <th>
-                                            {{ item.email }}
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>Phone Number</th>
-                                        <th>:</th>
-                                        <th>
-                                            {{ item.phone_number }}
+                                            {{ item.title }}
                                         </th>
                                     </tr>
                                 </tbody>

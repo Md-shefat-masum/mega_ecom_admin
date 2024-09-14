@@ -39,10 +39,10 @@
                                             </quick-view-column>
                                         </td>
                                         <td>
-                                            <img :src="item.image" alt="Image" />
+                                            <img v-if="item.image" :src="load_image(item.image)" alt="Image" />
                                         </td>
                                         <td>
-                                            {{ item.product_wearhouse_branch_id ?? 'null' }}
+                                            {{ item?.branch?.title ?? 'null' }}
                                         </td>
 
                                     </tr>

@@ -1,6 +1,6 @@
 <template lang="">
     <div class="custom_drop_down">
-        <input type="hidden" :id="name" :name="name" :value="`[${selected_ids}]`">
+        <input type="hidden" :id="name" :name="name" :value="multiple?`[${selected_ids}]`:`${selected_ids}`" />
         <div class="selected_list" @click="show_list = true">
             <div v-for="item in selected" :key="item.id" :id="item.id" class="selected_item">
                 <div class="label">
@@ -55,9 +55,17 @@ import debounce from '../../helpers/debounce';
 
 export default {
     props: {
+        multiple: {
+            type: Boolean,
+            default: false,
+        },
         name: {
             type: String,
             default: 'users_' + (parseInt(Math.random() * 1000)),
+        },
+        value: {
+            type: Array,
+            default: [],
         }
     },
     created: function () {

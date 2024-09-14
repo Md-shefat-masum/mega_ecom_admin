@@ -28,38 +28,6 @@
                                 :data_list="form_field.data_list" />
                         </div>
                     </div>
-                    <h4 class="mt-5"> User address</h4>
-                    <div>
-                        <div v-for="(address, index) in user_addresses" :key="index">
-                            <input type="hidden" :name="`userAddress[${index}][is_shipping]`" value="1">
-                            <div class="row">
-                                <div class="col-md-6" v-for="(field, field_index) in Object.keys(address)" :key="field_index">
-                                    <common-input
-                                        v-if="field != 'contacts'"
-                                        :label="field.replace(/_/g, ' ')"
-                                        :type="(field == `is_present_address` || field == `is_permanent_address`)? 'checkbox':  'text'"
-                                        :name="`userAddress[${index}][${field}]`"
-                                        :value="(field == `is_present_address` || field == `is_permanent_address`)? '1':  ''" />
-                                </div>
-                            </div>
-                            <h5>contact numbers</h5>
-                            <div>
-                                <div v-for="(contacts, contact_index) in address.contacts" :key="contact_index">
-                                    <h6 class="mt-4 text-info" >contact {{ contact_index + 1 }}</h6>
-                                    <div class="row">
-                                        <div class="col-md-6" v-for="(field, contact_field_index) in Object.keys(contacts)" :key="contact_field_index">
-                                            <common-input
-                                                v-if="field != 'contacts'"
-                                                :label="field.replace(/_/g, ' ')"
-                                                :type="'text'"
-                                                :name="`userAddress[${index}][contact_persons][${contact_index}][${field}]`"
-                                                :value="''" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-light btn-square px-5">

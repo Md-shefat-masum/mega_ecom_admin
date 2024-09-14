@@ -64,6 +64,8 @@
     </div>
 </template>
 <script>
+import { mapState } from 'pinia';
+import { store } from '../setup/store'
 export default {
     data: () => ({
         description_points: [
@@ -78,6 +80,13 @@ export default {
         ],
         is_modify: false,
     }),
+    watch: {
+        'item': {
+            handler: function(v){
+                this.description_points= get_json(v.short_description);
+            }
+        }
+    },
     methods: {
         add: function () {
             this.description_points.push({
@@ -88,6 +97,19 @@ export default {
         remove: function (index) {
             this.description_points.splice(index, 1);
         },
+        get_json: function(data){
+            try {
+                return JSON.parse(data)
+            } catch (error) {
+                return data
+            }
+        }
+    },
+    computed: {
+        ...mapState(store, {
+            item: "item",
+            is_loading: 'is_loading',
+        }),
     }
 }
 </script>

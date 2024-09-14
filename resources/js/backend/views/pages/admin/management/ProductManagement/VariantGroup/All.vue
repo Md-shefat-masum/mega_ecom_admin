@@ -17,7 +17,7 @@
                                         </th>
                                         <th class="w-10"> ID </th>
                                         <th> Title </th>
-                                        <th> Total Products </th>
+                                        <!-- <th> Total Products </th> -->
                                     </tr>
                                 </thead>
                                 <tbody v-if="all?.data?.length">
@@ -37,9 +37,9 @@
                                                 {{ item.title }}
                                             </quick-view-column>
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             {{ item.total_products }}
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 </tbody>
                             </table>

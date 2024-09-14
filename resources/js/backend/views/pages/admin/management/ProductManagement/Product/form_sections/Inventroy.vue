@@ -9,7 +9,7 @@
                     Warehouse
                 </label>
                 <div>
-                    <WeareHouseDropdown name="wear_house_id"/>
+                    <WeareHouseDropdown name="product_wearhouse_id"/>
                 </div>
             </div>
             <div class="col-md-4" v-if="type != 'edit'">
