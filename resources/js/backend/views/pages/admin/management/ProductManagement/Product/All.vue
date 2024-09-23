@@ -19,12 +19,12 @@
                                         <th> Image </th>
                                         <th> Title </th>
                                         <th> Code </th>
-                                        <th> Categories </th>
                                         <th> Brand </th>
                                         <th> Customer Sales Price </th>
                                         <th> Retailer Sales Price </th>
                                         <th> Stock </th>
                                         <th> status </th>
+                                        <th> Categories </th>
                                     </tr>
                                 </thead>
                                 <tbody v-if="all?.data?.length">
@@ -53,9 +53,6 @@
                                             {{ item.barcode }}
                                         </td>
                                         <td>
-                                            {{ item.product_categories?.map(i=>i.title).join(' / ') }}
-                                        </td>
-                                        <td>
                                             {{ item.product_brand?.title }}
                                         </td>
                                         <td>
@@ -69,6 +66,9 @@
                                         </td>
                                         <td>
                                             {{ item.stock >= item.alert_quantity ? 'avaiable' : 'stockout' }}
+                                        </td>
+                                        <td>
+                                            {{ item.product_categories?.map(i=>i.title).join(' / ') }}
                                         </td>
 
                                     </tr>

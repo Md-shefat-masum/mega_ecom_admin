@@ -143,6 +143,14 @@
                         title: `Units`,
                     },
                     {
+                        route_name: `AllProductForm`,
+                        title: `Medicine Forms`,
+                    },
+                    {
+                        route_name: `AllProductGeneric`,
+                        title: `Medicine Generics`,
+                    },
+                    {
                         route_name: `AllProductTag`,
                         title: `Product Tags`,
                     },

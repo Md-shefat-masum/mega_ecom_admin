@@ -40,6 +40,8 @@ import product_color_routes from "./management/ProductManagement/Color/setup/rou
 import product_routes from "./management/ProductManagement/Product/setup/routes"
 import product_unit_groups from "./management/ProductManagement/UnitGroup/setup/routes"
 import product_units from "./management/ProductManagement/Unit/setup/routes"
+import product_forms from "./management/ProductManagement/Form/setup/routes"
+import product_generics from "./management/ProductManagement/Generic/setup/routes"
 import product_tags from "./management/ProductManagement/ProductTag/setup/routes"
 import product_category_tags from "./management/ProductManagement/ProductCategoryTag/setup/routes"
 import BarcodeGenerator from "./management/ProductManagement/Barcode/BarcodeGenerator.vue"
@@ -135,6 +137,8 @@ const routes = {
         product_units,
         product_tags,
         product_category_tags,
+        product_forms,
+        product_generics,
 
         // configuration_routes,
         report_routes,

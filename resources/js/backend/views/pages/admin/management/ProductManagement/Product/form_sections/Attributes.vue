@@ -17,12 +17,12 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label>
+                <label for="product_category_group_id">
                     Product Type
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <select name="product_category_group_id" class="form-control">
+                    <select name="product_category_group_id" id="product_category_group_id" class="form-control">
                         <option value="">--select product type--</option>
                         <option value="3">
                             ইলেক্ট্রনিক্স ও যন্ত্রপাতি

@@ -48,6 +48,10 @@ include_once  base_path("app/Modules/ProductManagement/ProductVarientValue/Route
 include_once  base_path("app/Modules/ProductManagement/Product/Route.php");
 include_once  base_path("app/Modules/ProductManagement/ProductFaq/Route.php");
 include_once  base_path("app/Modules/ProductManagement/ProductOffer/Route.php");
+
+include_once  base_path("app/Modules/ProductManagement/ProductMedicineForm/Route.php");
+include_once  base_path("app/Modules/ProductManagement/ProductMedicineGeneric/Route.php");
+
 /*
 |--------------------------------------------------------------------------
 | Location management Routes

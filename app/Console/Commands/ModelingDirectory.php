@@ -64,7 +64,21 @@ class ModelingDirectory extends Command
             File::makeDirectory($actionsDirectory);
         }
 
-        $actionFiles = ['All.php', 'BulkActions.php', 'Store.php', 'Show.php', 'Update.php', 'Delete.php',  'Validation.php', 'Seeder.php'];
+        $actionFiles = [
+            'All.php',
+            'BulkActions.php',
+            'Store.php',
+            'Show.php',
+            'Update.php',
+            'Destroy.php',
+            'Validation.php',
+            'Seeder.php',
+            'Restore.php',
+            'SoftDelete.php',
+            'Import.php',
+            'GetAllValidation.php',
+            'BulkActionsValidation.php',
+        ];
 
         if ($module_dir != null) {
             $module_name = $module_dir . '/' . $moduleName;
@@ -87,13 +101,10 @@ class ModelingDirectory extends Command
             File::makeDirectory($DatabaseDirectory);
         }
 
-        // dd($module_name);
+
         foreach ($actionFiles as $file) {
             if ($file == 'All.php') {
                 File::put($actionsDirectory . '/' . $file, all($module_name));
-            }
-            if ($file == 'BulkActions.php') {
-                File::put($actionsDirectory . '/' . $file, bulkActions($module_name));
             }
             if ($file == 'Store.php') {
                 File::put($actionsDirectory . '/' . $file, store($module_name));
@@ -104,11 +115,29 @@ class ModelingDirectory extends Command
             if ($file == 'Update.php') {
                 File::put($actionsDirectory . '/' . $file, update($module_name));
             }
-            if ($file == 'Delete.php') {
-                File::put($actionsDirectory . '/' . $file, delete($module_name));
+            if ($file == 'Destroy.php') {
+                File::put($actionsDirectory . '/' . $file, destroy($module_name));
+            }
+            if ($file == 'BulkActions.php') {
+                File::put($actionsDirectory . '/' . $file, bulkActions($module_name));
+            }
+            if ($file == 'SoftDelete.php') {
+                File::put($actionsDirectory . '/' . $file, softDelete($module_name));
+            }
+            if ($file == 'Import.php') {
+                File::put($actionsDirectory . '/' . $file, import($module_name, $fields));
+            }
+            if ($file == 'Restore.php') {
+                File::put($actionsDirectory . '/' . $file, restore($module_name));
             }
             if ($file == 'Validation.php') {
                 File::put($ValidationDirectory . '/' . $file, validation($module_name, $fields));
+            }
+            if ($file == 'GetAllValidation.php') {
+                File::put($ValidationDirectory . '/' . $file, GetAllValidation($module_name, $fields));
+            }
+            if ($file == 'BulkActionsValidation.php') {
+                File::put($ValidationDirectory . '/' . $file, BulkActionsValidation($module_name, $fields));
             }
         }
 
@@ -123,7 +152,7 @@ class ModelingDirectory extends Command
 
         if ($withVue) {
 
-            $role = 'admin';
+            $role = 'super_admin';
             $vueDirectory = resource_path("js/backend/views/pages/{$role}/management/");
             $vue_format_dir = explode('/', $ViewModuleName);
             $vue_module_dir = null;
@@ -152,7 +181,7 @@ class ModelingDirectory extends Command
 
             // dd($module_name);
 
-            File::put($vueDirectory  . $ViewModuleName . '/All.vue', viewAll($ViewModuleName,$fields));
+            File::put($vueDirectory  . $ViewModuleName . '/All.vue', viewAll($ViewModuleName, $fields));
             File::put($vueDirectory  . $ViewModuleName . '/Form.vue', viewForm($ViewModuleName));
 
             $setupActionFiles = ['form_fields.js',  'index.js', 'Layout.vue', 'routes.js', 'store.js'];

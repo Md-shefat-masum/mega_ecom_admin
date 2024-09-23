@@ -87,6 +87,39 @@
                 </label>
                 <input type="text" :value="product_price" name="customer_sales_price" id="customer_sales_price" class="form-control">
             </div>
+            <div class="col-12"></div>
+            <div class="col-md-4">
+                <label>
+                    B2B Min Order Quantity
+                </label>
+                <div>
+                    <input type="text" name="sku" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label>
+                    B2B Max Order Quantity
+                </label>
+                <div>
+                    <input type="text" name="sku" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label>
+                    B2C Min Order Quantity
+                </label>
+                <div>
+                    <input type="text" name="sku" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label>
+                    B2C Max Order Quantity
+                </label>
+                <div>
+                    <input type="text" name="sku" class="form-control">
+                </div>
+            </div>
         </div>
     </div>
 </template>
