@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -44,7 +44,8 @@
             background: linear-gradient(90deg, #5D54A4, #7C78B8);
             position: relative;
             height: 600px;
-            width: 360px;
+            width: 100%;
+            max-width: 460px;
             box-shadow: 0px 0px 24px #5C5696;
         }
 
@@ -107,13 +108,13 @@
         }
 
         .login {
-            width: 320px;
+            width: 100%;
             padding: 30px;
             padding-top: 156px;
         }
 
         .login__field {
-            padding: 20px 0px;
+            padding: 20px 0px 10px;
             position: relative;
         }
 
@@ -132,6 +133,7 @@
             font-weight: 700;
             width: 75%;
             transition: .2s;
+            background-color: #c6e6ff4a;
         }
 
         .login__input:active,
@@ -145,7 +147,7 @@
             background: #fff;
             font-size: 14px;
             margin-top: 30px;
-            padding: 16px 20px;
+            padding: 10px 20px;
             border-radius: 26px;
             border: 1px solid #D4D3E8;
             text-transform: uppercase;
@@ -157,6 +159,9 @@
             box-shadow: 0px 2px 2px #5C5696;
             cursor: pointer;
             transition: .2s;
+            max-width: 200px;
+            height: 35px;
+            position: relative
         }
 
         .login__submit:active,
@@ -208,7 +213,7 @@
         button:disabled .visually-hidden {
             display: block;
             color: #6662a0;
-            width: 215px !important;
+            width: 82% !important;
             height: 20px !important;
             clip: unset !important;
         }
@@ -226,7 +231,7 @@
                         <div>
                             <input type="email" class="login__input @error('email') is-invalid @enderror"
                                 name="email" value="{{ old('email') }}" placeholder="Email" autocomplete="email">
-                            <p class="text-danger" id="email"></p>
+                            <div class="text-danger" id="email"></div>
                         </div>
                     </div>
                     <div class="login__field">
@@ -235,7 +240,7 @@
                             <input type="password" class="login__input @error('password') is-invalid @enderror"
                                 name="password" autocomplete="new-password" placeholder="Password">
 
-                            <p class="text-danger" id="password"></p>
+                            <div class="text-danger" id="password"></div>
                         </div>
                     </div>
                     {{-- <button class="button login__submit">
@@ -245,10 +250,12 @@
                     <div>
                         <button class="button login__submit" type="submit" id="spiner">
                             <span class="button__text">Log In</span>
+
                             <i class="button__icon fas fa-chevron-right"></i>
-                            <span class="spinner-border spinner-border-sm d-none mx-2" role="status"
+                            <span class="spinner-border spinner-border-sm d-none mx-2 position-absolute" role="status"
                                 aria-hidden="true"></span>
-                            <span class="visually-hidden">Loading...</span>
+
+                            <span class="visually-hidden button__text">Processing...</span>
                         </button>
                     </div>
                 </form>
@@ -278,7 +285,6 @@
             let spiner = document.getElementById('spiner')
             loadHandler(spiner, response = false)
 
-            //  spiner.classList.remove('d-none')
             fetch('login', {
                     method: "POST",
                     body: new FormData(event.target),
@@ -318,16 +324,18 @@
         }
 
         function loadHandler(target, response) {
+            console.log(target.children);
+
             if (response) {
                 target.removeAttribute('disabled')
                 target.children[0].classList.remove('d-none')
                 target.children[1].classList.add('d-none')
-                target.children[2].classList.add('visually-hidden')
+                target.children[2].classList.add('d-none')
             } else {
                 target.setAttribute('disabled', true)
                 target.children[0].classList.add('d-none')
                 target.children[1].classList.remove('d-none')
-                target.children[2].classList.remove('visually-hidden')
+                target.children[2].classList.remove('d-none')
             }
         }
     </script>

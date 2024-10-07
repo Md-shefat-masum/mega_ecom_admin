@@ -28,12 +28,12 @@
                                         <tbody>
                                             <tr v-for="(key_name, index) in product_fields[field]" :key="index">
                                                 <th style="width: 200px;">
-                                                    {{key_name.replace(/_/g, ' ')}}
+                                                    {{key_name.replace(/[_\.]/g, ' ')}}
                                                 </th>
                                                 <th>:</th>
                                                 <th>
                                                     <div v-if="!key_name.includes('is_')">
-                                                        {{ item[key_name] }}
+                                                        {{ get_value(key_name) }}
                                                     </div>
                                                     <div v-else>
                                                         <input type="checkbox" :checked="+item[key_name]" class="form-check-input" />
@@ -175,6 +175,13 @@ export default {
                 return JSON.parse(data)
             } catch (error) {
                 return data
+            }
+        },
+        get_value: function(path, obj= this.item) {
+            try {
+                return path.split('.').reduce((acc, key) => acc && acc[key], obj) || '';
+            } catch (error) {
+                return '';
             }
         }
     },

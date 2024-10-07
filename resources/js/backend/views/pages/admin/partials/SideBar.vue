@@ -19,6 +19,7 @@
                 </router-link>
             </li>
 
+            <!-- user management -->
             <side-bar-drop-down-menus :icon="`fa fa-plus`"
                 :icon_image="`https://files.etek.com.bd/images/icon_user.png`" :menu_title="`User Management`" :menus="[
                     {
@@ -30,20 +31,48 @@
                         title: `Customers`,
                     },
                     {
+                        route_name: `AllEmployer`,
+                        title: `Employees`,
+                    },
+                    // {
+                    //     route_name: `AllSupplier`,
+                    //     title: `Suppliers`,
+                    // },
+                    // {
+                    //     route_name: `AllRetailer`,
+                    //     title: `Retailers`,
+                    // },
+
+
+                ]" />
+
+            <!-- supplier managment -->
+            <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_supplier.png`"
+                :icon="`fa fa-plus`" :menu_title="`Supplier`" :menus="[
+                    {
+                        route_name: `AllSupplier_type`,
+                        title: `Supplier Types`,
+                    },
+                    {
                         route_name: `AllSupplier`,
                         title: `Suppliers`,
+                    },
+                ]" />
+
+            <!-- retailer management -->
+            <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_retailer.png`"
+                :icon="`fa fa-plus`" :menu_title="`Retailer`" :menus="[
+                    {
+                        route_name: `AllRetailer_type`,
+                        title: `Retailer Types`,
                     },
                     {
                         route_name: `AllRetailer`,
                         title: `Retailers`,
                     },
-                    {
-                        route_name: `AllEmployer`,
-                        title: `Employees`,
-                    },
-
                 ]" />
 
+            <!-- account management -->
             <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_accounting.png`"
                 :icon="`fa fa-plus`" :menu_title="`Accounts`" :menus="[
                     {
@@ -92,11 +121,20 @@
                     },
                 ]" />
 
+            <!-- product managment -->
             <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_product_management.png`"
                 :icon="`fa fa-plus`" :menu_title="`Products`" :menus="[
                     {
                         route_name: `CreateProduct`,
                         title: `Create Product`,
+                    },
+                    {
+                        route_name: `SetSizeColorVarient`,
+                        title: `Set size and color`,
+                    },
+                    {
+                        route_name: `SetVariant`,
+                        title: `Set Variant`,
                     },
                     {
                         route_name: `AllProduct`,
@@ -151,6 +189,10 @@
                         title: `Medicine Generics`,
                     },
                     {
+                        route_name: `AllProductCompany`,
+                        title: `Companies`,
+                    },
+                    {
                         route_name: `AllProductTag`,
                         title: `Product Tags`,
                     },
@@ -160,10 +202,49 @@
                     },
                 ]" />
 
+            <!-- inventory -->
+            <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_inventory.png`"
+                :icon="`fa fa-plus`" :menu_title="`Inventory`" :menus="[
+                    {
+                        route_name: `AllWear-house-branches`,
+                        title: `Wearhouse Braches`,
+                    },
+                    {
+                        route_name: `AllWear-houses`,
+                        title: `Wearhouse`,
+                    },
+                    {
+                        route_name: `AllStocks`,
+                        title: `Stocks`,
+                    },
+                    {
+                        route_name: `ProductPurchase`,
+                        title: `New Purchase`,
+                    },
+                ]" />
+
+            <!-- purchase -->
+            <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_purchase.png`"
+                :icon="`fa fa-plus`" :menu_title="`Purchase`" :menus="[
+                    {
+                        route_name: `AllCategory`,
+                        title: `Purchase Orders`,
+                    },
+                    {
+                        route_name: `AllBlog`,
+                        title: `Purchase Payments`,
+                    },
+                    {
+                        route_name: `AllBlog`,
+                        title: `Refunds`,
+                    },
+                ]" />
+
+            <!-- sales management -->
             <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_sales.png`"
                 :icon="`fa fa-plus`" :menu_title="`Sales`" :menus="[
                     {
-                        route_name: `AllCategory`,
+                        route_name: `AllSalesOrder`,
                         title: `Orders`,
                     },
                     {
@@ -174,12 +255,9 @@
                         route_name: `AllBlog`,
                         title: `Payments`,
                     },
-                    {
-                        route_name: `AllBlog`,
-                        title: `Refunds`,
-                    },
                 ]" />
 
+            <!-- ecommerce management -->
             <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_ecommerce.png`"
                 :icon="`fa fa-plus`" :menu_title="`e-Commerce`" :menus="[
                     {
@@ -274,72 +352,8 @@
                     },
                 ]" />
 
-            <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_inventory.png`"
-                :icon="`fa fa-plus`" :menu_title="`Inventory`" :menus="[
-                    {
-                        route_name: `AllWear-house-branches`,
-                        title: `Wearhouse Braches`,
-                    },
-                    {
-                        route_name: `AllWear-houses`,
-                        title: `Wearhouse`,
-                    },
-                    {
-                        route_name: `AllStocks`,
-                        title: `Stocks`,
-                    },
-                    {
-                        route_name: `ProductPurchase`,
-                        title: `New Purchase`,
-                    },
-                ]" />
-
-            <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_supplier.png`"
-                :icon="`fa fa-plus`" :menu_title="`Supplier`" :menus="[
-                    {
-                        route_name: `AllSupplier_type`,
-                        title: `Supplier Types`,
-                    },
-                    {
-                        route_name: `AllSupplier`,
-                        title: `Suppliers`,
-                    },
-                ]" />
-
-            <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_retailer.png`"
-                :icon="`fa fa-plus`" :menu_title="`Retailer`" :menus="[
-                    {
-                        route_name: `AllRetailer_type`,
-                        title: `Retailer Types`,
-                    },
-                    {
-                        route_name: `AllRetailer`,
-                        title: `Retailers`,
-                    },
-                ]" />
-
-
-            <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_purchase.png`"
-                :icon="`fa fa-plus`" :menu_title="`Purchase`" :menus="[
-                    {
-                        route_name: `AllCategory`,
-                        title: `Purchase Orders`,
-                    },
-                    {
-                        route_name: `AllBlog`,
-                        title: `Purchase Payments`,
-                    },
-                    {
-                        route_name: `AllBlog`,
-                        title: `Refunds`,
-                    },
-                ]" />
-
-            <side-bar-single-menu
-                :menu_title="`Reports`"
-                :route_name="`ReportList`"
-                :icon_image="`https://files.etek.com.bd/images/icon_report.png`"
-            />
+            <side-bar-single-menu :menu_title="`Reports`" :route_name="`ReportList`"
+                :icon_image="`https://files.etek.com.bd/images/icon_report.png`" />
 
             <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_settings.png`"
                 :icon="`fa fa-plus`" :menu_title="`Configuration`" :menus="[
@@ -382,7 +396,7 @@ import SideBarDropDownMenus from './SideBarDropDownMenus.vue';
 import SideBarSingleMenu from './SideBarSingleMenu.vue';
 export default {
     components: { SideBarDropDownMenus, SideBarSingleMenu },
-    mounted: function(){
+    mounted: function () {
         $("#menu").metisMenu();
     },
     methods: {

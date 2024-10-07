@@ -1,6 +1,6 @@
 <template lang="">
     <div class="custom_drop_down">
-        <input type="hidden" :id="name" :name="name" :value="`[${selected_ids}]`">
+        <input type="hidden" :id="name" :name="name" :value="multiple?`[${selected_ids}]`:`${selected_ids}`" />
         <div class="selected_list" @click="show_list = true">
             <div v-for="item in selected" :key="item.id" :id="item.id" class="selected_item">
                 <div class="label">
@@ -65,6 +65,10 @@ export default {
         value: {
             type: Array,
             default: [],
+        },
+        call_back: {
+            type: Function,
+            default: ()=>'',
         }
     },
     created: function () {
@@ -72,8 +76,13 @@ export default {
             this.get_all();
         }
         this.$watch('value',function(v){
-            this.selected = v;
-        })
+            v.forEach(i=>{
+                this.set_selected(i);
+            })
+        });
+        document.addEventListener("keydown", () =>
+            this.esc_enter_capture(this, 'dropdownel')
+        );
     },
     data: () => ({
         selected: [],
@@ -93,6 +102,7 @@ export default {
             this.only_latest_data = false;
         }, 500),
         set_selected: function (item, event) {
+            this.call_back(item);
             if(!this.multiple){
                 this.selected = [item];
                 return;
@@ -109,6 +119,7 @@ export default {
         },
         remove_item: function (item) {
             this.selected = this.selected.filter(i => i.id != item.id);
+            this.call_back(item);
         }
     },
     computed: {

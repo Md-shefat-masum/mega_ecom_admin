@@ -32,63 +32,72 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3">
                 <label>
                     Thumbnail Image
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <image-component name="thumb_image" :value="item?.product_image?.url"/>
+                    <image-component name="thumb_image" :images="[item?.product_image?.url]"/>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3" v-for="i in 6">
+            <div class="col-md-3 mb-3" v-for="i in 6">
                 <label>
                     Additional Image {{ i }}
                 </label>
                 <div>
-                    <image-component :value="get_related_image(i)" :name="`additional_image_${i}`"/>
+                    <image-component
+                        :delete_image_api="`/products/delete-image/${get_related_image_info(i - 1)?.id}`"
+                        :images="[get_related_image(i - 1)]"
+                        :name="`additional_image_${i}`"/>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
-import { mapState } from 'pinia';
-import { store } from '../setup/store'
+import { mapState } from "pinia";
+import { store } from "../setup/store";
 export default {
     data: () => ({
-        title: '',
-        slug: '',
-        search_keywords: '',
+        title: "",
+        slug: "",
+        search_keywords: "",
     }),
     methods: {
         createURL: function (str) {
             let url = str
                 .toLowerCase()
                 .trim()
-                .replace(/[^a-z0-9\s-]/g, '')
-                .replace(/\s+/g, '-');
+                .replace(/[^a-z0-9\s-]/g, "")
+                .replace(/\s+/g, "-");
             this.slug = url;
             this.search_keywords = str;
         },
-        get_related_image: function(index){
+        get_related_image_info: function (index) {
+            try {
+                return this.item.product_images[index];
+            } catch (error) {
+                return {};
+            }
+        },
+        get_related_image: function (index) {
             try {
                 return this.item.product_images[index].url;
             } catch (error) {
                 return null;
             }
-        }
+        },
     },
     computed: {
         ...mapState(store, {
             item: "item",
-            is_loading: 'is_loading',
+            is_loading: "is_loading",
         }),
-    }
-}
+    },
+};
 </script>
 <style lang="">
-
 </style>

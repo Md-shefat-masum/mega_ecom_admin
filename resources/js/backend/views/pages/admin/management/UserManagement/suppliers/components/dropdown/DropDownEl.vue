@@ -33,8 +33,9 @@
                                 type="checkbox" :id="`drop_item_${item.id}`"
                                 class="form-check-input ml-0">
                         </div>
-                        <div class="label">{{ item.name }}</div>
-                        <div class="label">{{ item.phone_number }}</div>
+                        <div class="label">
+                            {{ item.name }} - {{ item.phone_number }}
+                        </div>
                     </label>
                 </li>
             </ul>
@@ -71,7 +72,15 @@ export default {
     created: function () {
         if (!this.all?.data?.lenght) {
             this.get_all();
-        }
+        };
+        this.$watch("value", function (v) {
+            v.forEach((i) => {
+                this.set_selected(i);
+            });
+        });
+        document.addEventListener("keydown", () =>
+            this.esc_enter_capture(this, 'dropdownel')
+        );
     },
     data: () => ({
         selected: [],

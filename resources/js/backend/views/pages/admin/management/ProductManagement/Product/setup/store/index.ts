@@ -21,6 +21,8 @@ import set_show_details_canvas from "./actions/set_show_details_canvas";
 import set_show_filter_canvas from "./actions/set_show_filter_canvas";
 import set_status from "./actions/set_status";
 import setup from "..";
+import set_selected_managed_items from "./actions/set_selected_managed_items";
+import reset_selected_managed_items from "./actions/reset_selected_managed_items";
 
 export const store = defineStore(setup.store_prefix, {
     state: () => initialState,
@@ -45,5 +47,7 @@ export const store = defineStore(setup.store_prefix, {
         set_filter_criteria,
         set_status,
         set_only_latest_data,
+        set_selected_managed_items,
+        reset_selected_managed_items,
     },
 });

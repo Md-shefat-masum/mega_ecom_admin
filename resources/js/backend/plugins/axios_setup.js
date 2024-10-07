@@ -72,6 +72,7 @@ function errorReset(event) {
 }
 
 window.set_form_data = function (data, selector = "form") {
+    // console.log(data);
 
     for (const key in data) {
         if (Object.hasOwnProperty.call(data, key)) {
@@ -107,6 +108,7 @@ window.set_form_data = function (data, selector = "form") {
 
 window.render_form_errors = function (object, selector = "name") {
     console.log(object);
+    let first_el = null;
     for (const key in object) {
         if (Object.hasOwnProperty.call(object, key)) {
             const element = object[key];
@@ -120,6 +122,10 @@ window.render_form_errors = function (object, selector = "name") {
                 el = document.querySelector(`textarea[${selector}="${key}`);
             }
 
+            if(!first_el && el){
+                first_el = el;
+            }
+
             /**
              *  if html element found then take action
              */
@@ -129,6 +135,10 @@ window.render_form_errors = function (object, selector = "name") {
             }
         }
     }
+
+    setTimeout(() => {
+        document.querySelector('.error')?.parentElement?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
 };
 
 window.axios.interceptors.response.use(

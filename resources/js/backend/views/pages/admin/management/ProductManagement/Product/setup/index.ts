@@ -19,7 +19,9 @@ const setup: setup_type = {
         'id', 'title', 'product_brand_id', 'sku', 'product_unit_id', 'alert_quantity',
         'is_new', 'is_featured', 'is_available', 'is_pre_order', 'is_up_coming','is_best_selling','is_trending',
 
-        'purchase_price', 'customer_sales_price', 'retailer_sales_price', 'minimum_sale_price', 'maximum_sale_price',
+        'purchase_price', 'product_price', 'customer_sales_price', 'retailer_sales_price', 'minimum_sale_price', 'maximum_sale_price',
+        'b2c_discount_price', 'b2b_discount_price', 'discount_price',
+        'b2c_discount_amount', 'b2b_discount_amount', 'discount_amount',
         'profit_margin_percent', 'discount_type', 'discount_amount', 'tax_type', 'tax_amount',
 
         'expiration_days',

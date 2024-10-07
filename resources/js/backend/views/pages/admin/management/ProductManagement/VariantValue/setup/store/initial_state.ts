@@ -30,6 +30,8 @@ export const initialState = {
     orderByCol: 'id',
     orderByAsc: true,
 
+    product_varient_id: null,
+
 
     status: 'active', // active | inactive
 

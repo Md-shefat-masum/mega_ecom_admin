@@ -12,7 +12,7 @@ async function execute(event){
 
     form_data.delete('is_nav');
     form_data.delete('is_featured');
-    form_data.delete('serial');
+    // form_data.delete('serial');
 
     if(is_nav.checked){
         form_data.append('is_nav', "1");
@@ -26,11 +26,11 @@ async function execute(event){
         form_data.append('is_featured', "0");
     }
 
-    if(serial.vlaue){
-        form_data.append('serial', serial.vlaue);
-    }else{
-        form_data.append('serial', '');
-    }
+    // if(serial.vlaue){
+    //     form_data.append('serial', serial.vlaue);
+    // }else{
+    //     form_data.append('serial', '');
+    // }
 
     let url = `${setup.api_host}/${setup.api_version}/${setup.api_end_point}/store`;
 

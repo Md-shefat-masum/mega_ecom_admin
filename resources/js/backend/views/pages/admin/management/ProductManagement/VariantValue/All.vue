@@ -18,7 +18,7 @@
                                         <th class="w-10"> ID </th>
                                         <th> Value </th>
                                         <th> Varient </th>
-                                        <th> Varient Group </th>
+                                        <!-- <th> Varient Group </th> -->
                                         <th> Total Products </th>
                                     </tr>
                                 </thead>
@@ -40,11 +40,12 @@
                                             </quick-view-column>
                                         </td>
                                         <td>
+                                            {{ item?.product_varient_group?.title }} /
                                             {{ item?.product_varient?.title }}
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             {{ item?.product_varient_group?.title }}
-                                        </td>
+                                        </td> -->
                                         <td>
                                             {{ item.total_products }}
                                         </td>

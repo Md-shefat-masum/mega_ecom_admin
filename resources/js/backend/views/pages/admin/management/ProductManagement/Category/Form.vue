@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="">Title</label>
+                                        <label for="title">Title</label>
                                         <div class="mt-1 mb-3">
                                             <input class="form-control form-control-square mb-2" type="text"
                                                 name="title" id="title">
@@ -36,24 +36,38 @@
                                 <div class="col-md-12">
                                     <div class="d-flex flex-wrap" style="gap: 20px;">
                                         <div class="form-group" style="max-width: 200px;">
-                                            <label for="">Category Serial</label>
+                                            <label for="serial">Category Serial</label>
                                             <div class="mt-1 mb-3">
-                                                <input class="form-control form-control-square mb-2" type="text"
+                                                <input class="form-control form-control-square mb-2" type="number"
                                                     name="serial" id="serial">
                                             </div>
                                         </div>
                                         <div class="form-group" style="max-width: 150px;">
-                                            <label for="">Is Nav Category</label>
+                                            <label for="is_nav">Is Nav Category</label>
                                             <div class="mt-1 mb-3">
                                                 <input class="form-check-input mb-2 ml-0" type="checkbox" name="is_nav"
                                                     id="is_nav">
                                             </div>
                                         </div>
                                         <div class="form-group" style="max-width: 150px;">
-                                            <label for="">Is Featured</label>
+                                            <label for="is_featured">Is Featured</label>
                                             <div class="mt-1 mb-3">
                                                 <input class="form-check-input mb-2 ml-0" type="checkbox" name="is_featured"
                                                     id="is_featured">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="max-width: 200px;">
+                                            <label for="is_group_featured">Is Category Group Landing Page Featured</label>
+                                            <div class="mt-1 mb-3">
+                                                <input class="form-check-input mb-2 ml-0" type="checkbox" name="is_group_featured"
+                                                    id="is_group_featured">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="max-width: 200px;">
+                                            <label for="is_shop_page_featured">Is Category Shop Page Featured</label>
+                                            <div class="mt-1 mb-3">
+                                                <input class="form-check-input mb-2 ml-0" type="checkbox" name="is_shop_page_featured"
+                                                    id="is_shop_page_featured">
                                             </div>
                                         </div>
                                     </div>

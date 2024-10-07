@@ -1,10 +1,11 @@
 <template lang="">
     <div class="custom_drop_down">
-        <input type="hidden" :id="name" :name="name" :value="`[${selected_ids}]`">
+        <input type="hidden" :id="name" :name="name" :value="multiple?`[${selected_ids}]`:`${selected_ids}`">
         <div class="selected_list" @click="show_list = true">
             <div v-for="item in selected" :key="item.id" :id="item.id" class="selected_item">
                 <div class="label">
-                    {{ item.name }}
+                    {{ item.account_name }} -
+                    {{ item.account_number }}
                 </div>
                 <div @click.prevent="remove_item(item)" class="remove">
                     <i class="fa fa-close"></i>
@@ -20,7 +21,7 @@
 
                 <button type="button"
                     @click.prevent="show_list = false"
-                    class="btn btn-outline-danger">
+                    class="btn btn-danger">
                     <i class="fa fa-close"></i>
                 </button>
             </div>
@@ -33,8 +34,10 @@
                                 type="checkbox" :id="`drop_item_${item.id}`"
                                 class="form-check-input ml-0">
                         </div>
-                        <div class="label">{{ item.name }}</div>
-                        <div class="label">{{ item.phone_number }}</div>
+                        <div class="label">
+                            {{ item.account_name }} -
+                            {{ item.account_number }}
+                        </div>
                     </label>
                 </li>
             </ul>
@@ -54,16 +57,37 @@ import { store } from '../../setup/store';
 import debounce from '../../helpers/debounce';
 
 export default {
+    name: 'AccountNumberDropDownEl',
     props: {
+        multiple: {
+            type: Boolean,
+            default: false,
+        },
         name: {
             type: String,
             default: 'users_' + (parseInt(Math.random() * 1000)),
+        },
+        value: {
+            type: Array,
+            default: [],
+        },
+        callback: {
+            type: Function,
+            default: () => '',
         }
     },
     created: function () {
         if (!this.all?.data?.lenght) {
             this.get_all();
         }
+        this.$watch('value',function(v){
+            v.forEach(i=>{
+                this.set_selected(i);
+            })
+        });
+        document.addEventListener("keydown", () =>
+            this.esc_enter_capture(this, "dropdownel")
+        );
     },
     data: () => ({
         selected: [],
@@ -81,8 +105,14 @@ export default {
             this.only_latest_data = true;
             await this.get_all();
             this.only_latest_data = false;
-        }, 300),
+        }, 500),
         set_selected: function (item, event) {
+            this.callback(item);
+            if(!this.multiple){
+                this.selected = [item];
+                return;
+            }
+
             if (event.target.checked) {
                 this.selected.push(item);
             } else {

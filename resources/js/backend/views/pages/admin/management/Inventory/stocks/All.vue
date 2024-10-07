@@ -16,10 +16,10 @@
                                             <select-all />
                                         </th>
                                         <th class="w-10"> ID </th>
-                                        <th> stock type </th>
-                                        <th> product id </th>
+                                        <th> product </th>
                                         <th> qty </th>
-                                        <th> product wearhouse id </th>
+                                        <th> stock type </th>
+                                        <th> product wearhouse</th>
                                     </tr>
                                 </thead>
                                 <tbody v-if="all?.data?.length">
@@ -35,16 +35,18 @@
                                             {{ item.id }}
                                         </td>
                                         <td>
-                                            <quick-view-column :item="item">
-                                                {{ item.stock_type ??'null'}}
-                                            </quick-view-column>
-                                        </td>
-                                        <td>
                                             {{ item?.product?.title ?? 'null' }}
                                         </td>
                                         <td>
                                             {{ item.qty ?? 'null' }}
                                         </td>
+                                        
+                                        <td>
+                                            <quick-view-column :item="item">
+                                                {{ item.stock_type ??'null'}}
+                                            </quick-view-column>
+                                        </td>
+                                
                                         <td>
                                             {{ item?.wearhouse?.title ?? 'null' }}
                                         </td>

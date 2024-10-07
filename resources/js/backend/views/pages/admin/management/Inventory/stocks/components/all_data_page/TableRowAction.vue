@@ -2,16 +2,16 @@
     <span @click.prevent="active_row($event)" class="icon"></span>
     <div class="table_action_btns">
         <ul>
-            <li>
+            <!-- <li v-if="item.slug">
                 <details-btn :item="item" />
             </li>
-            <li>
+            <li v-if="item.slug">
                 <edit :item="item"/>
             </li>
-            <li>
+            <li v-if="item.slug">
                 <deactive :item="item"/>
-            </li>
-            <li>
+            </li> -->
+            <li v-if="item.slug">
                 <destroy :item="item"/>
             </li>
 

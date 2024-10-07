@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h5 class="text-capitalize">
-                        New Purchase
+                        Purchase
                     </h5>
                     <div>
                         <router-link v-if="item.slug" class="btn btn-outline-info mr-2 btn-sm"

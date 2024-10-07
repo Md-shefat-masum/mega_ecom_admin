@@ -19,12 +19,6 @@
                 <input name="openning_stock" id="openning_stock" type="text" class="form-control">
             </div>
             <div class="col-md-4">
-                <label for="low_stock">
-                    Low Stock
-                </label>
-                <input type="text" name="low_stock" id="low_stock" class="form-control">
-            </div>
-            <div class="col-md-4">
                 <label for="product_warranty">
                     Product waranty ( days )
                 </label>

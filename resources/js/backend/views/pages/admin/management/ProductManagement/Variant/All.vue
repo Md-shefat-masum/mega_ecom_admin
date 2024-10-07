@@ -41,9 +41,6 @@
                                         <td>
                                             {{ item?.product_varient_group?.title }}
                                         </td>
-                                        <td>
-                                            <!-- {{ item.total_products }} -->
-                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

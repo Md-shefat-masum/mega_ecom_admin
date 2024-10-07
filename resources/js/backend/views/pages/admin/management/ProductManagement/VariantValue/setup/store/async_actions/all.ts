@@ -30,6 +30,8 @@ let execute = async () => {
         'inactive_data_count',
 
         'is_filter_active',
+
+        'product_varient_id',
     ]);
 
     let qparams: anyObject = {
@@ -44,6 +46,10 @@ let execute = async () => {
             status: state.status.get(),
         },
     };
+
+    if(state.product_varient_id.get()){
+        qparams.params.product_varient_id = state.product_varient_id.get();
+    }
 
     // console.log(store, qparams);
 

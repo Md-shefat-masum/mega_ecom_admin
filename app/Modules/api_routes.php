@@ -51,6 +51,7 @@ include_once  base_path("app/Modules/ProductManagement/ProductOffer/Route.php");
 
 include_once  base_path("app/Modules/ProductManagement/ProductMedicineForm/Route.php");
 include_once  base_path("app/Modules/ProductManagement/ProductMedicineGeneric/Route.php");
+include_once  base_path("app/Modules/ProductManagement/ProductCompany/Route.php");
 
 /*
 |--------------------------------------------------------------------------
@@ -161,3 +162,14 @@ include_once  base_path("app/Modules/BlogManagement/Blog/Route.php");
 |--------------------------------------------------------------------------
 */
 include_once  base_path("app/Modules/Subscriber/Route.php");
+
+/*
+|--------------------------------------------------------------------------
+| account and payments
+|--------------------------------------------------------------------------
+*/
+include_once  base_path("app/Modules/AccountAndPayments/AccountExpenditureGroups/Route.php");
+include_once  base_path("app/Modules/AccountAndPayments/AccountExpenditures/Route.php");
+include_once  base_path("app/Modules/AccountAndPayments/AccountHeads/Route.php");
+include_once  base_path("app/Modules/AccountAndPayments/AccountNumbers/Route.php");
+include_once  base_path("app/Modules/AccountAndPayments/Accounts/Route.php");

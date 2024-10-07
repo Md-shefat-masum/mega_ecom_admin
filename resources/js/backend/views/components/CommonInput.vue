@@ -28,7 +28,7 @@
             <!-- <textarea class="form-control form-control-square" rows="10"  type="text" :name="name" :value="value"
                 @change="errorReset"></textarea> -->
             <!-- <div :id="name"></div> -->
-            <text-editor :name="name" />
+            <text-editor :name="name" :set_value="set_text_area_value" />
         </div>
 
         <div v-if="type === 'select'" class="mt-1 mb-3">
@@ -108,6 +108,9 @@ export default {
         removeTag: function (item) {
 
             this.remove_tag(item)
+        },
+        set_text_area_value: function (data_store, v) {
+            // console.log(data_store, v);
         }
     },
     created: async function () {

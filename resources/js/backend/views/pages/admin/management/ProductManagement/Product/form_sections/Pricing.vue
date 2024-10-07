@@ -75,14 +75,14 @@
             </div>
             <div class="col-md-4">
                 <label for="retailer_sales_price">
-                    Retailer Sales Price
+                    B2B Sales Price
                     <span class="text-danger">*</span>
                 </label>
                 <input type="text" :value="product_price" name="retailer_sales_price" id="retailer_sales_price" class="form-control">
             </div>
             <div class="col-md-4">
                 <label for="customer_sales_price">
-                    Customer Sales Price
+                    B2C Sales Price
                     <span class="text-danger">*</span>
                 </label>
                 <input type="text" :value="product_price" name="customer_sales_price" id="customer_sales_price" class="form-control">
@@ -93,7 +93,7 @@
                     B2B Min Order Quantity
                 </label>
                 <div>
-                    <input type="text" name="sku" class="form-control">
+                    <input type="text" name="b2b_min_qty" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
@@ -101,7 +101,7 @@
                     B2B Max Order Quantity
                 </label>
                 <div>
-                    <input type="text" name="sku" class="form-control">
+                    <input type="text" name="b2b_max_qty" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
@@ -109,7 +109,7 @@
                     B2C Min Order Quantity
                 </label>
                 <div>
-                    <input type="text" name="sku" class="form-control">
+                    <input type="text" name="b2c_min_qty" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
@@ -117,22 +117,36 @@
                     B2C Max Order Quantity
                 </label>
                 <div>
-                    <input type="text" name="sku" class="form-control">
+                    <input type="text" name="b2c_max_qty" class="form-control">
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import { mapState } from 'pinia';
+import { store } from "../setup/store";
 export default {
     data: ()=>({
         price: {}
     }),
+    watch: {
+        'item': {
+            handler: function(v){
+                this.price = v;
+            },
+            deep: true,
+        }
+    },
     computed: {
+        ...mapState(store, {
+            item: "item",
+            is_loading: "is_loading",
+        }),
         product_price: function(){
             let price = (+this.price.tax_amount || 0) + (+this.price.purchase_price || 0);
             let profit = price * +this.price.profit_margin_percent / 100;
-            return price + profit;
+            return Math.round(price + profit);
         }
     }
 }

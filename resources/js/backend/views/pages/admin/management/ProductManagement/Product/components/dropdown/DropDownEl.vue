@@ -35,7 +35,9 @@
                         </div>
                         <div class="label">
                             <div class="d-flex gap-3">
-                                <img :src="load_image(item.product_image?.url)" style="height: 30px;width: 30px;" />
+                                <div v-if="load_image(item.product_image?.url)" >
+                                    <img :src="load_image(item.product_image?.url)" style="height: 30px;width: 30px;" />
+                                </div>
                                 <div class="ms-4 ml-4">
                                     {{ item.title }} -
                                 </div>
@@ -89,7 +91,10 @@ export default {
             v.forEach(i=>{
                 this.set_selected(i);
             })
-        })
+        });
+        document.addEventListener("keydown", () =>
+            this.esc_enter_capture(this, 'dropdownel')
+        );
     },
     data: () => ({
         selected: [],

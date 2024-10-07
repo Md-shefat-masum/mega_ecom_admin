@@ -18,6 +18,7 @@ import TextEditor from '../backend/views/components/TextEditor.vue';
 // project rotes
 import admin_routes from "./views/pages/admin/routes"
 import app_config from './views/pages/admin/app_config';
+import esc_enter_capture from './plugins/esc_enter_capture';
 // roters
 
 const router = createRouter({
@@ -43,16 +44,18 @@ router.afterEach((to, from) => {
 const pinia = createPinia()
 const app = createApp({});
 
-app.config.globalProperties.load_image = function(url){
+app.config.globalProperties.load_image = function (url) {
     try {
         new URL(url);
         return url;
     } catch (error) {
-        let full_url = app_config.image_host+'/'+url;
-        full_url.replaceAll('//','/');
+        let full_url = app_config.image_host + '/' + url;
+        full_url.replaceAll('//', '/');
         return full_url;
     }
 }
+
+app.config.globalProperties.esc_enter_capture = esc_enter_capture;
 
 app.component('app', App);
 app.component("common-input", CommonInput);

@@ -4,7 +4,8 @@ import Form from "../Form.vue";
 import Edit from "../Edit.vue";
 import Details from "../Details.vue";
 import Layout from "../Layout.vue";
-import CatList from "../CatList.vue";
+import SetSizeColorVarient from "../SetSizeColorVarient.vue";
+import SetVariant from "../SetVariant.vue";
 
 let route_prefix = setup.route_prefix;
 
@@ -19,14 +20,19 @@ const routes =
             component: All,
         },
         {
-            path: 'all-tree',
-            name: "AllCategories",
-            component: CatList,
-        },
-        {
             path: "create",
             name: "Create" + route_prefix,
             component: Form,
+        },
+        {
+            path: "set-size-color-variant",
+            name: "SetSizeColorVarient",
+            component: SetSizeColorVarient,
+        },
+        {
+            path: "set-variant",
+            name: "SetVariant",
+            component: SetVariant,
         },
         {
             path: ":id",

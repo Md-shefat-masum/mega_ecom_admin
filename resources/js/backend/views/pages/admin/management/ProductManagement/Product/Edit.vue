@@ -24,12 +24,17 @@
                 <div class="card-body card_body_fixed_height">
                     <div class="row">
                         <div class="col-xl-12">
+                            <input v-if="item.id" type="hidden" name="id" :value="item.id" />
 
                             <product-informations />
 
                             <hr class="my-5" />
 
                             <Attributes />
+
+                            <hr class="my-5" />
+
+                            <AttributesMedicine />
 
                             <hr class="my-5" />
 
@@ -87,6 +92,7 @@ import Inventroy from './form_sections/Inventroy.vue';
 import PresentationCriterion from './form_sections/PresentationCriterion.vue';
 import DetailsInforamtion from './form_sections/DetailsInforamtion.vue';
 import SeoInformation from './form_sections/SeoInformation.vue';
+import AttributesMedicine from './form_sections/AttributesMedicine.vue';
 
 export default {
     components: {
@@ -101,7 +107,8 @@ export default {
         Inventroy,
         PresentationCriterion,
         DetailsInforamtion,
-        SeoInformation
+        SeoInformation,
+        AttributesMedicine,
     },
     data: () => ({
         route_prefix: '',

@@ -17,12 +17,12 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="product_category_group_id">
+                <label for="type">
                     Product Type
                     <span class="text-danger">*</span>
                 </label>
-                <div>
-                    <select name="product_category_group_id" id="product_category_group_id" class="form-control">
+                <div id="type">
+                    <!-- <select name="product_category_group_id" id="product_category_group_id" class="form-control">
                         <option value="">--select product type--</option>
                         <option value="3">
                             ইলেক্ট্রনিক্স ও যন্ত্রপাতি
@@ -30,8 +30,11 @@
                         <option value="1">
                             মেডিসিন
                         </option>
-                    </select>
-                    <!-- <CategoryGroupDropDown :name="`product_category_group_id`" :multiple="false" /> -->
+                    </select> -->
+                    <CategoryGroupDropDown 
+                        :value="item?.product_category_group ? [item?.product_category_group] : []"
+                        :name="`product_category_group_id`" 
+                        :multiple="false" />
                 </div>
             </div>
             <div class="col-md-4">
@@ -48,11 +51,22 @@
             </div>
             <div class="col-md-4">
                 <label>
+                    Manufacturer
+                </label>
+                <div class="no_pagination">
+                    <ManufactureDropDown
+                        :value="item?.product_menufecturer? [item.product_menufecturer] : []"
+                        :name="`product_menufecturer_id`"
+                        :multiple="false"/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="product_unit_id">
                     Unit
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <select name="product_unit_id" :value="item.product_unit_id" class="form-control">
+                    <select name="product_unit_id" id="product_unit_id" :value="item.product_unit_id" class="form-control">
                         <option value="">--select unit--</option>
                         <option v-for="unit in units" :value="unit.id" :key="unit.id">
                             {{ unit.title }}
@@ -61,15 +75,13 @@
                 </div>
                 <!-- <UnitDropDown :name="`product_unit_id`" /> -->
             </div>
+
             <div class="col-md-4">
-                <label>
-                    Manufacturer
+                <label for="product_unit_multiplier">
+                    Unit Multiplier
                 </label>
-                <div class="no_pagination">
-                    <ManufactureDropDown
-                        :value="item?.product_menufecturer? [item.product_menufecturer] : []"
-                        :name="`product_menufecturer_id`"
-                        :multiple="false"/>
+                <div>
+                    <input type="text" name="product_unit_multiplier" id="product_unit_multiplier" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
@@ -91,14 +103,22 @@
             </div>
             <div class="col-md-4">
                 <label>
-                    Weight (kg)
+                    Weight (gm)
                 </label>
                 <div>
                     <input type="text" name="weight" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
-                <label>
+                <label for="width">
+                    Width (in)
+                </label>
+                <div>
+                    <input type="text" name="width" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="height">
                     Height (in)
                 </label>
                 <div>
@@ -106,7 +126,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label>
+                <label for="alert_quantity">
                     Alert Quantity
                     <span class="text-danger">*</span>
                 </label>
@@ -115,7 +135,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label>
+                <label for="seller_points">
                     Seller Point
                 </label>
                 <div>

@@ -20,7 +20,7 @@
                             <label class="mb-2">Varient</label>
                             <VarientDropDown
                                 :multiple="false"
-                                :value="default_group"
+                                :value="get_drop_value()"
                                 :name="`product_varient_id`"/>
                         </div>
                         <template v-for="(form_field, index) in form_fields" v-bind:key="index">
@@ -34,6 +34,13 @@
                                     :data_list="form_field.data_list" />
                             </div>
                         </template>
+                        <div class="col-md-6">
+                            <label for="value">Varient Value ( if has. eg: color_code )</label>
+                            <div class="d-flex" style="gap: 10px;">
+                                <input type="text" :value="item.value" name="value" ref="value" class="form-control w-50">
+                                <input type="color" @change="$refs.value.value = $event.target.value">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -115,6 +122,10 @@ export default {
                 }
             }
         },
+
+        get_drop_value: function () {
+            return this.item.product_varient?[this.item.product_varient]:[];
+        }
     },
 
     computed: {

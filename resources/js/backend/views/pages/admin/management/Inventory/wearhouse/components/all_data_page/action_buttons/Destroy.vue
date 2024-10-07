@@ -22,15 +22,16 @@ export default {
             `set_only_latest_data`,
             `set_item`,
         ]),
-        destroy_data: async function(){
+        destroy_data: async function () {
             let con = await window.s_confirm('Permanently delete');
-            if(con){
+            if (con) {
                 this.set_item(this.item);
                 this.set_only_latest_data(true);
 
-                await this.destroy();
+                let res = await this.destroy();
                 await this.get_all();
-                window.s_alert('Permanently deleted.');
+
+                window.s_alert(res.data.message, res.data.statusCode == 200 ? 'success' : 'error');
 
                 this.set_only_latest_data(false);
             }

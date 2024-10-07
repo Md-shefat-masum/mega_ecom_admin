@@ -42,6 +42,7 @@ import product_unit_groups from "./management/ProductManagement/UnitGroup/setup/
 import product_units from "./management/ProductManagement/Unit/setup/routes"
 import product_forms from "./management/ProductManagement/Form/setup/routes"
 import product_generics from "./management/ProductManagement/Generic/setup/routes"
+import product_companies from "./management/ProductManagement/Company/setup/routes"
 import product_tags from "./management/ProductManagement/ProductTag/setup/routes"
 import product_category_tags from "./management/ProductManagement/ProductCategoryTag/setup/routes"
 import BarcodeGenerator from "./management/ProductManagement/Barcode/BarcodeGenerator.vue"
@@ -67,6 +68,10 @@ import general_seo_routes from "./management/Ecommerce/GeneralSeo/setup/routes"
 import offers_routes from "./management/Ecommerce/Offer/setup/routes"
 import ecommerce_order_routes from "./management/Ecommerce/SalesOrder/setup/routes"
 // eCommerce management routes end
+
+// sales order management
+import sales_order_routes from "./management/SalesMangement/SalesOrder/setup/routes"
+
 
 const routes = {
     path: '',
@@ -95,6 +100,10 @@ const routes = {
         //blog management routes
         // blog_category_routes,
         // blog_routes,
+        
+        // sales order routes
+        sales_order_routes,
+
         //user management routes
         user_routes,
         user_supplier_routes,
@@ -139,6 +148,7 @@ const routes = {
         product_category_tags,
         product_forms,
         product_generics,
+        product_companies,
 
         // configuration_routes,
         report_routes,

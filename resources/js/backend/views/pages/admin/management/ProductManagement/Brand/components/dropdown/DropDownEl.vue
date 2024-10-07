@@ -75,7 +75,10 @@ export default {
             v.forEach(i=>{
                 this.set_selected(i);
             })
-        })
+        });
+        document.addEventListener("keydown", () =>
+            this.esc_enter_capture(this, 'dropdownel')
+        );
     },
     data: () => ({
         selected: [],

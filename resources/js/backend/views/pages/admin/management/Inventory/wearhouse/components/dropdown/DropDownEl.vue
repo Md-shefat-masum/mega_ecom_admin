@@ -53,6 +53,7 @@ import { store } from '../../setup/store';
 import debounce from '../../helpers/debounce';
 
 export default {
+    name: 'wearhoseDropDownEl',
     props: {
         multiple: {
             type: Boolean,
@@ -75,7 +76,10 @@ export default {
             v.forEach(i=>{
                 this.set_selected(i);
             })
-        })
+        });
+        document.addEventListener("keydown", () =>
+            this.esc_enter_capture(this, "dropdownel")
+        );
     },
     data: () => ({
         selected: [],

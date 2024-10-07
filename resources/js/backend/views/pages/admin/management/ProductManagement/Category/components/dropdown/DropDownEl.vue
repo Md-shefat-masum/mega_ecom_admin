@@ -51,9 +51,9 @@
     </div>
 </template>
 <script>
-import { mapActions, mapState, mapWritableState } from 'pinia';
-import { store } from '../../setup/store';
-import debounce from '../../helpers/debounce';
+import { mapActions, mapState, mapWritableState } from "pinia";
+import { store } from "../../setup/store";
+import debounce from "../../helpers/debounce";
 
 export default {
     props: {
@@ -63,33 +63,33 @@ export default {
         },
         name: {
             type: String,
-            default: 'users_' + (parseInt(Math.random() * 1000)),
+            default: "users_" + parseInt(Math.random() * 1000),
         },
         value: {
             type: Array,
             default: [],
-        }
+        },
     },
     created: function () {
         if (!this.all?.data?.lenght) {
             this.get_all();
         }
-        this.$watch('value',function(v){
-            v.forEach(i=>{
+        this.$watch("value", function (v) {
+            v.forEach((i) => {
                 this.set_selected(i);
-            })
-        })
+            });
+        });
+
+        document.addEventListener("keydown", () =>
+            this.esc_enter_capture(this, 'dropdownel')
+        );
     },
     data: () => ({
         selected: [],
         show_list: false,
     }),
     methods: {
-        ...mapActions(store, [
-            'get_all',
-            'set_paginate',
-            'set_page',
-        ]),
+        ...mapActions(store, ["get_all", "set_paginate", "set_page"]),
         search_item: debounce(async function (event) {
             let value = event.target.value;
             this.search_key = value;
@@ -98,19 +98,21 @@ export default {
             this.only_latest_data = false;
         }, 500),
         set_selected: function (item, event) {
-            if(!this.multiple){
+            if (!this.multiple) {
                 this.selected = [item];
                 return;
-            } else if(this.multiple && !event) {
+            } else if (this.multiple && !event) {
                 this.selected.push(item);
                 return;
             }
 
-            if(event){
+            if (event) {
                 if (event?.target?.checked) {
                     this.selected.push(item);
                 } else {
-                    this.selected = this.selected.filter(i => i.id != item.id);
+                    this.selected = this.selected.filter(
+                        (i) => i.id != item.id
+                    );
                 }
             }
         },
@@ -118,22 +120,17 @@ export default {
             return this.selected.find((i) => i.id == item.id);
         },
         remove_item: function (item) {
-            this.selected = this.selected.filter(i => i.id != item.id);
-        }
+            this.selected = this.selected.filter((i) => i.id != item.id);
+        },
     },
     computed: {
-        ...mapState(store, [
-            'all',
-        ]),
-        ...mapWritableState(store, [
-            'search_key',
-        ]),
+        ...mapState(store, ["all"]),
+        ...mapWritableState(store, ["search_key"]),
         selected_ids: function () {
-            return this.selected.map(i => i.id).join(',');
-        }
-    }
-}
+            return this.selected.map((i) => i.id).join(",");
+        },
+    },
+};
 </script>
 <style lang="">
-
 </style>

@@ -83,7 +83,7 @@ export default {
     watch: {
         'item': {
             handler: function(v){
-                this.description_points= get_json(v.short_description);
+                this.description_points= this.get_json(v.short_description);
             }
         }
     },
