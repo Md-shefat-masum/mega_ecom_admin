@@ -69,14 +69,14 @@ import { store } from '../setup/store'
 export default {
     data: () => ({
         description_points: [
-            {
-                key: 'color',
-                value: 'red',
-            },
-            {
-                key: 'speed',
-                value: '100mbps',
-            },
+            // {
+            //     key: 'Fabric',
+            //     value: '',
+            // },
+            // {
+            //     key: 'Collar',
+            //     value: '',
+            // },
         ],
         is_modify: false,
     }),

@@ -73,20 +73,35 @@
                 </label>
                 <input type="text" :value="product_price" name="maximum_sale_price" id="maximum_sale_price" class="form-control">
             </div>
-            <div class="col-md-4">
+
+            <div class="col-md-4" v-for="group in customer_groups" :key="group.id">
+                <label for="retailer_sales_price">
+                    {{group.title}} Sales Price
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text" :value="product_price"
+                    :name="`sales_price[${group.id}]`"
+                    :id="`${group.id}_sales_price`"
+                    class="form-control">
+            </div>
+
+            <!-- <div class="col-md-4">
                 <label for="retailer_sales_price">
                     B2B Sales Price
                     <span class="text-danger">*</span>
                 </label>
                 <input type="text" :value="product_price" name="retailer_sales_price" id="retailer_sales_price" class="form-control">
-            </div>
-            <div class="col-md-4">
+            </div> -->
+
+            <!-- <div class="col-md-4">
                 <label for="customer_sales_price">
                     B2C Sales Price
                     <span class="text-danger">*</span>
                 </label>
                 <input type="text" :value="product_price" name="customer_sales_price" id="customer_sales_price" class="form-control">
-            </div>
+            </div> -->
+
+            <!--
             <div class="col-12"></div>
             <div class="col-md-4">
                 <label>
@@ -119,7 +134,7 @@
                 <div>
                     <input type="text" name="b2c_max_qty" class="form-control">
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -127,12 +142,16 @@
 import { mapState } from 'pinia';
 import { store } from "../setup/store";
 export default {
-    data: ()=>({
-        price: {}
+    data: () => ({
+        price: {},
+        customer_groups: [],
     }),
+    created: function(){
+        this.get_customer_groups();
+    },
     watch: {
         'item': {
-            handler: function(v){
+            handler: function (v) {
                 this.price = v;
             },
             deep: true,
@@ -143,10 +162,18 @@ export default {
             item: "item",
             is_loading: "is_loading",
         }),
-        product_price: function(){
+        product_price: function () {
             let price = (+this.price.tax_amount || 0) + (+this.price.purchase_price || 0);
             let profit = price * +this.price.profit_margin_percent / 100;
             return Math.round(price + profit);
+        }
+    },
+    methods: {
+        get_customer_groups: function(){
+            axios.get('user-customer-types?get_all=1')
+                .then(res=>{
+                    this.customer_groups = res.data.data;
+                })
         }
     }
 }

@@ -14,7 +14,7 @@
                 <label for="meta_description">
                     Meta Description
                 </label>
-                <input type="text" name="meta_description" id="meta_description" class="form-control">
+                <textarea type="text" name="meta_description" id="meta_description" class="form-control"></textarea>
             </div>
             <div class="col-md-12">
                 <label for="meta_keywords">

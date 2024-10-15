@@ -32,7 +32,7 @@ export default {
                 // await this.get_all();
                 window.s_warning('Sorry you have to no destroy this data');
 
-                this.set_only_latest_data(false);
+                this.set_only_latest_data(true);
             }
         },
     }

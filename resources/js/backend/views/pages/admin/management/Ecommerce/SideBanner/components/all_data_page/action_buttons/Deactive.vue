@@ -36,7 +36,7 @@ export default {
                 await this.get_all();
                 window.s_alert('Deactivated');
 
-                this.set_only_latest_data(false);
+                this.set_only_latest_data(true);
             }
         },
         restore_data: async function(){
@@ -49,7 +49,7 @@ export default {
                 await this.get_all();
                 window.s_alert('Restored');
 
-                this.set_only_latest_data(false);
+                this.set_only_latest_data(true);
             }
         },
     }

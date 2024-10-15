@@ -14,7 +14,8 @@
                             }">
                             Details
                         </router-link>
-                        <router-link class="btn btn-outline-warning btn-sm" :to="{ name: `All${setup.route_prefix}` }">
+                        <router-link class="btn btn-outline-warning btn-sm"
+                            :to="{ name: `All${setup.route_prefix}` }">
                             All {{ setup.route_prefix }}
                         </router-link>
                     </div>
@@ -29,9 +30,8 @@
 
                             <Attributes />
 
-                            <hr class="my-5" />
-
-                            <AttributesMedicine />
+                            <!-- <hr class="my-5" />
+                            <AttributesMedicine /> -->
 
                             <hr class="my-5" />
 
@@ -75,6 +75,7 @@ import { mapActions, mapState } from 'pinia'
 import { store } from './setup/store';
 import { store as category_store } from '../Category/setup/store';
 
+import latest_bar_code from './setup/store/async_actions/get_latest_barcode'
 import setup from "./setup";
 import form_fields from "./setup/form_fields";
 import UnitGroupDropDown from "../UnitGroup/components/dropdown/DropDownEl.vue"
@@ -121,6 +122,7 @@ export default {
         this.route_prefix = setup.route_prefix;
         this.set_item({});
         this.reset_fields();
+        latest_bar_code();
 
         // await this.get_categories();
         if (id) {
@@ -188,6 +190,7 @@ export default {
         ...mapState(store, {
             item: "item",
             is_loading: 'is_loading',
+            latest_bar_code: "latest_bar_code",
         }),
         default_group: function(){
             return this.item && this.item.group ? [this.item.group] : [];

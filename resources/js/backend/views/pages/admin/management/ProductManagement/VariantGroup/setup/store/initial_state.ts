@@ -51,5 +51,5 @@ export const initialState = {
 
     /*_______________*/
     cached: 0,
-    only_latest_data: false,
+    only_latest_data: true,
 };

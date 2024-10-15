@@ -18,9 +18,9 @@
                                         <th class="w-10"> ID </th>
                                         <th> account_head_id </th>
                                         <th> title </th>
-                                        <th> description </th>
-                                        <th> transaction_start_date </th>
-                                        <th> account_transaction_type </th>
+                                        <!-- <th> description </th> -->
+                                        <th> transaction start date </th>
+                                        <th> account transaction type </th>
                                     </tr>
                                 </thead>
                                 <tbody v-if="all?.data?.length">
@@ -36,7 +36,7 @@
                                             {{ item.id }}
                                         </td>
                                         <td>
-                                            {{ item.account_head_id ?? 'null' }}
+                                            {{ item.account_head?.title ?? 'null' }}
                                         </td>
                                         <td>
                                             <quick-view-column :item="item">
@@ -44,14 +44,15 @@
                                             </quick-view-column>
                                         </td>
                                         <td>
-                                            {{ item.description ?? 'null' }}
+                                            {{ item.account_transaction_type ?? 'null' }}
                                         </td>
+                                        <!-- <td>
+                                            {{ item.description ?? 'null' }}
+                                        </td> -->
                                         <td>
                                             {{ new Date(item.transaction_start_date).getFullYear() }}-{{ new Date(item.transaction_start_date).getMonth() + 1 }}-{{ new Date(item.transaction_start_date).getDate() }}
                                         </td>
-                                        <td>
-                                            {{ item.account_transaction_type ?? 'null' }}
-                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>

@@ -17,11 +17,11 @@
                                         </th>
                                         <th class="w-10"> ID </th>
                                         <th> Image </th>
-                                        <th> Title </th>
+                                        <th class="text-left text-start"> Title </th>
+                                        <th> Purchase Price</th>
+                                        <th> Product Price</th>
                                         <th> Code </th>
                                         <th> Brand </th>
-                                        <th> Customer Sales Price </th>
-                                        <th> Retailer Sales Price </th>
                                         <th> Stock </th>
                                         <th> status </th>
                                         <th> Categories </th>
@@ -44,10 +44,18 @@
                                                 :src="load_image(item.product_image?.url)" alt=""
                                                 style="height: 30px;">
                                         </td>
+                                        <td class="text-wrap text-left text-start">
+                                            <div style="width: 400px;">
+                                                <quick-view-column :item="item">
+                                                    {{ item.title }}
+                                                </quick-view-column>
+                                            </div>
+                                        </td>
                                         <td>
-                                            <quick-view-column :item="item">
-                                                {{ item.title }}
-                                            </quick-view-column>
+                                            {{ item.purchase_price }}
+                                        </td>
+                                        <td>
+                                            {{ item.product_price }}
                                         </td>
                                         <td>
                                             {{ item.barcode }}
@@ -55,12 +63,7 @@
                                         <td>
                                             {{ item.product_brand?.title }}
                                         </td>
-                                        <td>
-                                            {{ item.customer_sales_price }}
-                                        </td>
-                                        <td>
-                                            {{ item.retailer_sales_price }}
-                                        </td>
+
                                         <td>
                                             {{ item.stock }}
                                         </td>

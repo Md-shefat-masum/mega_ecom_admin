@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-4">
                 <label for="type">
-                    Product Type
+                    Product Group
                     <span class="text-danger">*</span>
                 </label>
                 <div id="type">
@@ -31,9 +31,9 @@
                             মেডিসিন
                         </option>
                     </select> -->
-                    <CategoryGroupDropDown 
+                    <CategoryGroupDropDown
                         :value="item?.product_category_group ? [item?.product_category_group] : []"
-                        :name="`product_category_group_id`" 
+                        :name="`product_category_group_id`"
                         :multiple="false" />
                 </div>
             </div>
@@ -68,7 +68,7 @@
                 <div>
                     <select name="product_unit_id" id="product_unit_id" :value="item.product_unit_id" class="form-control">
                         <option value="">--select unit--</option>
-                        <option v-for="unit in units" :value="unit.id" :key="unit.id">
+                        <option v-for="unit in units" :selected="unit.title=='peice'" :value="unit.id" :key="unit.id">
                             {{ unit.title }}
                         </option>
                     </select>
@@ -98,7 +98,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <input type="text" name="barcode" class="form-control">
+                    <input type="text" @change="extractNumberFromString" :value="latest_bar_code" name="barcode" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
@@ -131,7 +131,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <input type="text" name="alert_quantity" class="form-control">
+                    <input type="text" value="10" name="alert_quantity" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
@@ -174,6 +174,14 @@ export default {
             }
         }
     },
+    methods: {
+         extractNumberFromString: function() {
+            let input = event.target.value;
+            let numericString = input.replace(/\D/g, '');
+            let barcode = numericString ? parseInt(numericString, 10) : this.latest_bar_code;
+            event.target.value = barcode;
+        }
+    },
     mounted: function(){
         axios.get('/all-product-units')
             .then(res=>{
@@ -184,6 +192,7 @@ export default {
         ...mapState(store, {
             item: "item",
             is_loading: 'is_loading',
+            latest_bar_code: "latest_bar_code",
         }),
     }
 }

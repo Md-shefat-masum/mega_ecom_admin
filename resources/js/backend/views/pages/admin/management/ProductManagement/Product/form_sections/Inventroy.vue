@@ -24,12 +24,12 @@
                 </label>
                 <input type="text" name="product_warranty" id="product_warranty" class="form-control">
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <label for="expiration_days">
                     Expire Date
                 </label>
                 <input type="date" name="expiration_days" id="expiration_days" class="form-control">
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

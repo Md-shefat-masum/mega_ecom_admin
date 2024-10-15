@@ -32,7 +32,7 @@ export default {
                 await this.get_all();
                 window.s_alert('Permanently deleted.');
 
-                this.set_only_latest_data(false);
+                this.set_only_latest_data(true);
             }
         },
     }

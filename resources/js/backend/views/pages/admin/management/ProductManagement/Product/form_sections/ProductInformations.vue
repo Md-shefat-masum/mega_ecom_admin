@@ -38,11 +38,16 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <image-component name="thumb_image" :images="[item?.product_image?.url]"/>
+                    <image-component name="thumb_image" :images="[load_image(item?.product_image?.url)]"/>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" @click="add_more_image = !add_more_image" v-show="!add_more_image">
+            <div cass="col-md-3">
+                <button type="button">Add more image</button>
+            </div>
+        </div>
+        <div class="row" v-show="add_more_image">
             <div class="col-md-3 mb-3" v-for="i in 6">
                 <label>
                     Additional Image {{ i }}
@@ -65,6 +70,7 @@ export default {
         title: "",
         slug: "",
         search_keywords: "",
+        add_more_image: false,
     }),
     methods: {
         createURL: function (str) {
@@ -75,6 +81,13 @@ export default {
                 .replace(/\s+/g, "-");
             this.slug = url;
             this.search_keywords = str;
+
+            ['meta_title','meta_keywords','meta_description'].forEach(id=>{
+                let el = document.getElementById(id);
+                if(el){
+                    el.value = str;
+                }
+            })
         },
         get_related_image_info: function (index) {
             try {

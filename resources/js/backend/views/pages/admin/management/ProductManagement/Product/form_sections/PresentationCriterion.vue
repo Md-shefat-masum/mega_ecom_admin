@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-3">
                 <div class="pl-4">
-                    <input type="checkbox" name="is_available" id="is_available" class="form-check-input">
+                    <input type="checkbox" checked name="is_available" id="is_available" class="form-check-input">
                     <label class="ml-2" for="is_available">
                         Available in E-commerce
                     </label>

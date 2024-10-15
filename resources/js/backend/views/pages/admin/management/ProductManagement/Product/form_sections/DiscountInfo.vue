@@ -21,16 +21,16 @@
                 </label>
                 <input type="number" v-model="discount_amount" name="discount_amount" id="discount_amount" class="form-control">
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <label for="discount_price">
                     Discount Price
                     <span class="text-danger">*</span>
                 </label>
                 <input type="text" :value="discount_price" name="discount_price" id="discount_price" class="form-control">
-            </div>
+            </div> -->
         </div>
 
-        <div class="row mt-5" style="row-gap: 20px;">
+        <!-- <div class="row mt-5" style="row-gap: 20px;">
             <div class="col-12">
                 <h4>B2B Discount Info</h4>
             </div>
@@ -47,7 +47,6 @@
             <div class="col-md-4">
                 <label for="b2b_discount_amount">
                     B2B Discount Amount
-                    <!-- <span class="text-danger">*</span> -->
                 </label>
                 <input type="number" v-model="b2b_discount_amount" name="b2b_discount_amount" id="b2b_discount_amount" class="form-control">
             </div>
@@ -58,9 +57,9 @@
                 </label>
                 <input type="text" :value="b2b_discount_price" name="b2b_discount_price" id="b2b_discount_price" class="form-control">
             </div>
-        </div>
+        </div> -->
 
-        <div class="row mt-5" style="row-gap: 20px;">
+        <!-- <div class="row mt-5" style="row-gap: 20px;">
             <div class="col-12">
                 <h4>B2C Discount Info</h4>
             </div>
@@ -77,7 +76,6 @@
             <div class="col-md-4">
                 <label for="b2c_discount_amount">
                     B2C Discount Amount
-                    <!-- <span class="text-danger">*</span> -->
                 </label>
                 <input type="number" v-model="b2c_discount_amount" name="b2c_discount_amount" id="b2c_discount_amount" class="form-control">
             </div>
@@ -88,7 +86,7 @@
                 </label>
                 <input type="text" :value="b2c_discount_price" name="b2c_discount_price" id="b2c_discount_price" class="form-control">
             </div>
-        </div>
+        </div> -->
 
     </div>
 </template>

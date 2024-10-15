@@ -49,9 +49,9 @@ app.config.globalProperties.load_image = function (url) {
         new URL(url);
         return url;
     } catch (error) {
-        let full_url = app_config.image_host + '/' + url;
+        let full_url = '/' + url;
         full_url.replaceAll('//', '/');
-        return full_url;
+        return app_config.image_host + full_url;
     }
 }
 

@@ -9,6 +9,7 @@ import user_retailer_routes from "./management/UserManagement/retailers/setup/ro
 import user_retailer_type_routes from "./management/UserManagement/retailer_type/setup/routes";
 import user_employer_routes from "./management/UserManagement/employees/setup/routes";
 import user_customer_routes from "./management/UserManagement/customers/setup/routes";
+import CustomerTypes from "./management/UserManagement/customer_type/setup/routes";
 
 //Configuration routes
 import email_configuration_routes from "./management/Configuration/email/setup/routes"
@@ -100,7 +101,7 @@ const routes = {
         //blog management routes
         // blog_category_routes,
         // blog_routes,
-        
+
         // sales order routes
         sales_order_routes,
 
@@ -109,6 +110,7 @@ const routes = {
         user_supplier_routes,
         user_retailer_routes,
         user_employer_routes,
+        CustomerTypes,
         user_customer_routes,
         user_supplier_type_routes,
         user_retailer_type_routes,

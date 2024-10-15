@@ -19,7 +19,11 @@ Route::group([
 //     return view('home');
 // });
 
-Route::get('/empty_orders', function(){
+Route::get('/', function () {
+    return redirect('/login');
+});
+
+Route::get('/empty_orders', function () {
     DB::table('sales_orders')->truncate();
     DB::table('sales_order_products')->truncate();
     DB::table('account_transaction_logs')->truncate();
@@ -36,7 +40,6 @@ function create_slug($url)
     $transformedPath = str_replace('/', '-', trim($path, '/'));
     return $transformedPath;
 }
-
 
 // Route::view('up', "up");
 // Route::view('up-image', "up-image");

@@ -56,6 +56,24 @@ return [
             'throw' => false,
         ],
 
+        'etek' => [
+            'driver'   => 'ftp',
+            'host'     => env('ETEK_FTP_HOST'),
+            'username' => env('ETEK_FTP_USERNAME'),
+            'password' => env('ETEK_FTP_PASSWORD'),
+            'root' => 'public',
+            'port' => 21,
+            'ssl' => false,
+            'timeout' => 90,
+            'utf8' => false,
+            'passive' => true,
+            'transferMode' => FTP_BINARY,
+            'systemType' => null, // 'windows' or 'unix'
+            'ignorePassiveAddress' => null, // true or false
+            'timestampsOnUnixListingsEnabled' => false, // true or false
+            'recurseManually' => true // true
+        ],
+
     ],
 
     /*

@@ -36,7 +36,7 @@ export default {
                 await this.bulk_action(action, selected_data);
                 await this.get_all();
                 this.clear_selected();
-                this.set_only_latest_data(false);
+                this.set_only_latest_data(true);
                 window.s_alert('You have ' + action + ' items ?');
             }
 

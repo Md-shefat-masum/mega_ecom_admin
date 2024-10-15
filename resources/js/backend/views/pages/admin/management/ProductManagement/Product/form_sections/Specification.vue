@@ -100,8 +100,8 @@ export default {
         is_modify: false,
     }),
     created: function () {
-        this.add();
-        this.add();
+        // this.add();
+        // this.add();
     },
     watch: {
         'item': {
@@ -117,11 +117,11 @@ export default {
                 "values": [
                     {
                         "key": "color",
-                        "value": "red"
+                        "value": ""
                     },
                     {
                         "key": "size",
-                        "value": "sm,lg,xl"
+                        "value": ""
                     }
                 ],
             });

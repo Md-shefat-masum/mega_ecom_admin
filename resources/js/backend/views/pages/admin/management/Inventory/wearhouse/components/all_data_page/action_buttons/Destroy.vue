@@ -33,7 +33,7 @@ export default {
 
                 window.s_alert(res.data.message, res.data.statusCode == 200 ? 'success' : 'error');
 
-                this.set_only_latest_data(false);
+                this.set_only_latest_data(true);
             }
         },
     }

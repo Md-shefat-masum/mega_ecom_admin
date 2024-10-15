@@ -27,12 +27,16 @@
                         title: `Users`,
                     },
                     {
+                        route_name: `AllEmployer`,
+                        title: `Employees`,
+                    },
+                    {
                         route_name: `AllCustomer`,
                         title: `Customers`,
                     },
                     {
-                        route_name: `AllEmployer`,
-                        title: `Employees`,
+                        route_name: `AllCustomerTypes`,
+                        title: `Customer Groups`,
                     },
                     // {
                     //     route_name: `AllSupplier`,
@@ -60,7 +64,7 @@
                 ]" />
 
             <!-- retailer management -->
-            <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_retailer.png`"
+            <!-- <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_retailer.png`"
                 :icon="`fa fa-plus`" :menu_title="`Retailer`" :menus="[
                     {
                         route_name: `AllRetailer_type`,
@@ -70,7 +74,7 @@
                         route_name: `AllRetailer`,
                         title: `Retailers`,
                     },
-                ]" />
+                ]" /> -->
 
             <!-- account management -->
             <side-bar-drop-down-menus :icon_image="`https://files.etek.com.bd/images/icon_accounting.png`"

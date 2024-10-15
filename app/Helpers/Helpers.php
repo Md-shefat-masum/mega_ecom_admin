@@ -74,7 +74,6 @@ if (!function_exists('uploader')) {
             return $path;
         }
 
-
         $image = Image::make($source);
 
         if (!$path) {
@@ -102,12 +101,16 @@ if (!function_exists('uploader')) {
         }
         $full_name = $path . '/' . $file_name;
         $image->save(public_path($full_name));
+
+        /** ftp upload */
+        try {
+            Storage::disk('etek')->putFileAs($path, public_path($full_name), $file_name);
+        } catch (\Throwable $th) {
+        }
+        
         return $full_name;
     }
 }
-
-
-
 
 
 function numercToAlphabet($number)

@@ -28,8 +28,7 @@ export const initialState = {
     search_key: ``,
 
     orderByCol: 'id',
-    orderByAsc: true,
-
+    orderByAsc: false,
 
     status: 'active', // active | inactive
 
@@ -51,5 +50,7 @@ export const initialState = {
 
     /*_______________*/
     cached: 0,
-    only_latest_data: false,
+    only_latest_data: true,
+
+    latest_bar_code: '',
 };

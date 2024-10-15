@@ -37,7 +37,7 @@ export default {
                 await this.get_all();
                 document.querySelector('.select_all_checkbox').checked = false;
                 this.clear_selected();
-                this.set_only_latest_data(false);
+                this.set_only_latest_data(true);
                 window.s_alert('You have ' + action + ' items ?');
             }
 

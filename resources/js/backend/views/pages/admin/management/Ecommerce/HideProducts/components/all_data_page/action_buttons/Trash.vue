@@ -31,7 +31,7 @@ export default {
 
             this.get_all();
 
-            this.set_only_latest_data(false);
+            this.set_only_latest_data(true);
         }
     },
     computed: {

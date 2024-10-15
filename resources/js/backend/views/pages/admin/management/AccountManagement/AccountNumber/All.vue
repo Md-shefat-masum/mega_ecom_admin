@@ -16,13 +16,13 @@
                                             <select-all />
                                         </th>
                                         <th class="w-10"> ID </th>
-                                        <th> account_head_id </th>
-                                        <th> account_id </th>
-                                        <th> account_number </th>
-                                        <th> account_name </th>
+                                        <th> account head id </th>
+                                        <th> account id </th>
+                                        <th> account number </th>
+                                        <th> account name </th>
                                         <th> amount </th>
-                                        <th> opening_balance </th>
-                                        <th> account_transaction_id </th>
+                                        <th> opening balance </th>
+                                        <th> account transaction_id </th>
                                     </tr>
                                 </thead>
                                 <tbody v-if="all?.data?.length">
@@ -38,11 +38,11 @@
                                             {{ item.id }}
                                         </td>
                                         <td>
-                                            {{ item.account_head_id ?? 'null' }}
+                                            {{ item.account_head?.title ?? 'null' }}
                                         </td>
                                         <td>
                                             <quick-view-column :item="item">
-                                                {{ item.account_id ??'null'}}
+                                                {{ item.account?.title ??'null'}}
                                             </quick-view-column>
                                         </td>
                                         <td>
