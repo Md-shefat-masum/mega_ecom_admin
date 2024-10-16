@@ -32,9 +32,9 @@
 
                             <Attributes />
 
-                            <hr class="my-5" />
+                            <!-- <hr class="my-5" />
 
-                            <AttributesMedicine />
+                            <AttributesMedicine /> -->
 
                             <hr class="my-5" />
 
@@ -83,6 +83,7 @@ import form_fields from "./setup/form_fields";
 import UnitGroupDropDown from "../UnitGroup/components/dropdown/DropDownEl.vue"
 import CatListRadio from '../../../../../components/CatListRadio.vue';
 import CategoryGroupDropdown from '../CategoryGroup/components/dropdown/DropDownEl.vue';
+import latest_bar_code from './setup/store/async_actions/get_latest_barcode'
 
 import ProductInformations from './form_sections/ProductInformations.vue';
 import Attributes from './form_sections/Attributes.vue';
@@ -92,7 +93,7 @@ import Inventroy from './form_sections/Inventroy.vue';
 import PresentationCriterion from './form_sections/PresentationCriterion.vue';
 import DetailsInforamtion from './form_sections/DetailsInforamtion.vue';
 import SeoInformation from './form_sections/SeoInformation.vue';
-import AttributesMedicine from './form_sections/AttributesMedicine.vue';
+// import AttributesMedicine from './form_sections/AttributesMedicine.vue';
 
 export default {
     components: {
@@ -108,7 +109,7 @@ export default {
         PresentationCriterion,
         DetailsInforamtion,
         SeoInformation,
-        AttributesMedicine,
+        // AttributesMedicine,
     },
     data: () => ({
         route_prefix: '',
@@ -128,6 +129,8 @@ export default {
         // await this.get_categories();
         if (id) {
             this.set_fields(id);
+        }else{
+            latest_bar_code();
         }
 
     },

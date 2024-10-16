@@ -38,11 +38,11 @@
                         <div class="col-md-12 py-4" v-if="product">
                             <label for="color">Select Color</label>
 
-                            <div class="my-2" style="display: grid; grid-template-columns: repeat(auto-fit,150px);align-items: center;;">
+                            <div class="my-2" style="display: grid; grid-template-columns: repeat(auto-fit,150px);align-items: center;gap: 20px;">
                                 <div class="pl-4 d-flex align-items-center"  v-for="color in colors" :key="color.id">
                                     <input @change="push_color(color)" type="checkbox" :name="`color_${color.id}`" :id="`color_${color.id}`" class="form-check-input">
                                     <label class="ml-2 mb-0 d-flex align-items-center" :for="`color_${color.id}`">
-                                        <span class="mr-2" :style="`height: 20px; width: 20px; background: ${color.value}`"></span>
+                                        <span v-if="color.value" class="mr-2" :style="`height: 20px; width: 20px; background: ${color.value}`"></span>
                                         {{ color.title }}
                                     </label>
                                 </div>
@@ -62,7 +62,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Color</th>
-                                                <th class="text-center" style="width: 200px;">Qty</th>
+                                                <!-- <th class="text-center" style="width: 200px;">Qty</th> -->
                                                 <!-- <th class="text-center" style="width: 200px;">Price</th> -->
                                                 <th class="text-center" style="width: 400px;">Image</th>
                                             </tr>
@@ -76,17 +76,31 @@
                                                     <input type="hidden" :value="variant.id" :name="`color_varient_qty[${variant.id}][product_varient_value_id]`">
                                                     <input type="hidden" :value="variant.product_varient?.title" :name="`color_varient_qty[${variant.id}][varient_title]`">
 
-                                                    {{ variant.title }}
+                                                    <div class="text-uppercase">
+                                                        {{ variant.title }}
+                                                    </div>
 
                                                 </td>
-                                                <td>
+                                                <!-- <td>
                                                     <input :name="`color_varient_qty[${variant.id}][qty]`" type="number" class="form-control">
-                                                </td>
+                                                </td> -->
                                                 <!-- <td>
                                                     <input name="price" type="number" class="form-control">
                                                 </td> -->
                                                 <td>
-                                                    <image-component :name="`color_varient_qty[${variant.id}][image][]`" :multiple="true" />
+                                                    <div v-if="variant.images.length">
+                                                        <image-component
+                                                            :images="get_variant_image_link(variant.images)"
+                                                            :name="`color_varient_qty[${variant.id}][image][]`"
+                                                            :delete_image_api="`products/delete-varient-image?product_varient_value_id=${variant.id}&slug=${product.slug}`"
+                                                            :multiple="true" />
+                                                    </div>
+
+                                                    <image-component
+                                                        v-else
+                                                        :images="[]"
+                                                        :name="`color_varient_qty[${variant.id}][image][]`"
+                                                        :multiple="true" />
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -107,7 +121,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Size</th>
-                                                <th class="text-center" style="width: 200px;">Qty</th>
+                                                <!-- <th class="text-center" style="width: 200px;">Qty</th> -->
                                                 <th class="text-center" style="width: 200px;">Price</th>
                                             </tr>
                                         </thead>
@@ -119,14 +133,18 @@
                                                     <input type="hidden" :value="variant.product_varient?.id" :name="`varient_size[${variant.id}][product_varient_id]`">
                                                     <input type="hidden" :value="variant.id" :name="`varient_size[${variant.id}][product_varient_value_id]`">
                                                     <input type="hidden" :value="variant.product_varient?.title" :name="`varient_size[${variant.id}][varient_title]`">
-
-                                                    {{ variant.title }}
+                                                    <div class="text-uppercase">
+                                                        {{ variant.title }}
+                                                    </div>
                                                 </td>
-                                                <td>
+                                                <!-- <td>
                                                     <input :name="`varient_size[${variant.id}][qty]`" type="number" class="form-control">
-                                                </td>
+                                                </td> -->
                                                 <td>
-                                                    <input :name="`varient_size[${variant.id}][price]`" type="number" class="form-control">
+                                                    <input :name="`varient_size[${variant.id}][price]`"
+                                                        :value="variant.price || get_retail_price()"
+                                                        type="number"
+                                                        class="form-control">
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -157,11 +175,16 @@
                                                     <input type="hidden" :value="product.id" :name="`varient_combinition[${index}][product_id]`">
                                                     <input type="hidden" :value="variant.color_id" :name="`varient_combinition[${index}][color_product_varient_value_id]`">
                                                     <input type="hidden" :value="variant.size_id" :name="`varient_combinition[${index}][size_product_varient_value_id]`">
-
-                                                    {{ variant.combination }}
+                                                    <div class="text-uppercase">
+                                                        {{ variant.combination }}
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <input :name="`varient_combinition[${index}][qty]`" type="number" class="form-control">
+                                                    <input
+                                                        :name="`varient_combinition[${index}][qty]`"
+                                                        :value="get_color_size_qty(variant.color_id, variant.size_id)"
+                                                        type="number"
+                                                        class="form-control">
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -204,15 +227,18 @@ export default {
         product: null,
         size: [],
         color: [],
+        color_size_qty: [],
         variants: [],
+
+        retail_price: 0,
     }),
 
     created: async function () {
         this.route_prefix = setup.route_prefix;
-        axios.get('/product-varient-values/varients-by-type?group=cloth&varient=color').then((res) => {
+        axios.get('/product-varient-values/varients-by-type?group=fashion&varient=color').then((res) => {
             this.colors = res.data.data;
         });
-        axios.get('/product-varient-values/varients-by-type?group=cloth&varient=size').then((res) => {
+        axios.get('/product-varient-values/varients-by-type?group=fashion&varient=size').then((res) => {
             this.sizes = res.data.data;
         });
     },
@@ -232,6 +258,8 @@ export default {
                 }
             }
 
+            variant.sort((a, b) => a.color_id - b.color_id);
+            // console.log(variant);
             this.variants = variant;
         },
 
@@ -239,7 +267,10 @@ export default {
             if (this.color.find((i)=>i.id==color.id)) {
                 this.color= this.color.filter(i=>i.id != color.id);
             } else {
-                this.color.push(color);
+                this.color.push({
+                    ...color,
+                    images: [],
+                });
             }
         },
         push_size(size) {
@@ -251,7 +282,53 @@ export default {
         },
 
         get_product: function(data){
+            this.reset_product();
             this.product = data;
+            this.set_default_color_size();
+        },
+
+        set_default_color_size: async function(){
+            let res = await axios.get('/products/color-and-size?slug='+this.product.slug);
+            this.color = res.data.data.colors;
+            this.size = res.data.data.size_and_prices;
+            this.color_size_qty = res.data.data.color_size_qty;
+
+            this.color.forEach((i)=>{
+                let el = document.getElementById('color_'+i.id);
+                if(el){
+                    el.checked = true;
+                }
+            })
+
+            this.size.forEach((i)=>{
+                let el = document.getElementById('size_'+i.id);
+                if(el){
+                    el.checked = true;
+                }
+            })
+
+            if(this.color_size_qty.length){
+                this.generateVariants();
+            }
+        },
+
+        get_retail_price: function(){
+            // console.log(this.product.customer_group_prices);
+            try{
+                this.retail_price = this.product.customer_group_prices.find(i=>i.user_customer_type_id == 3).price;
+            }catch(error){
+                this.retail_price = this.product.product_price;
+            }
+
+            return this.retail_price;
+        },
+
+        get_color_size_qty: function(color_id, size_id){
+            try{
+                return this.color_size_qty.find(i=>(i.color_id==color_id && i.size_id == size_id)).qty;
+            }catch(error){
+                return 0;
+            }
         },
 
         submitHandler: async function(){
@@ -261,6 +338,22 @@ export default {
             } catch (error) {
                 window.s_alert('failed', 'error');
             }
+        },
+
+        reset_product: function(){
+            let inputs = document.querySelectorAll('input[type="checkbox"]');
+            inputs = [...inputs];
+            inputs.forEach(i => i.checked=false);
+            this.color = [];
+            this.size = [];
+            this.color_size_qty = [];
+            this.variants = [];
+            this.product= null;
+        },
+
+        get_variant_image_link: function(images){
+            let urls = images.map(i=>this.load_image(i.url));
+            return urls;
         }
     },
 

@@ -33,7 +33,7 @@
                 </div>
                 <div class="card_body_fixed_height" id="print_area" v-show="show">
                     <div v-for="i in count" :key="i" class="mb-3 text-center">
-                        <div class="bg-white d-inline-block text-dark p-3" style="max-width: 250px;">
+                        <div class="bg-white d-inline-block text-dark p-3" style="max-width: 450px;">
                             <div>{{ company }}</div>
                             <div>{{ product }}</div>
                             <div><b>Price:</b>৳{{ price }}</div>
@@ -58,7 +58,7 @@ export default {
         ProductDropDown,
     },
     data: ()=>({
-        count: 100,
+        count: 10,
         label: '',
         price: '',
         product: "",
@@ -77,7 +77,7 @@ export default {
                         JsBarcode("#barcode"+index, this.label, {
                             format: "CODE39",
                             lineColor: "#000",
-                            width: 1,
+                            width: 1.5,
                             height: 40,
                             displayValue: false
                         });
@@ -93,9 +93,7 @@ export default {
         get_selected_product: function(data){
             this.product = data.title;
             this.label = data.barcode;
-            this.price = data.customer_sales_price;
-
-            console.log(data);
+            this.price = data.product_price;
         }
     }
 }

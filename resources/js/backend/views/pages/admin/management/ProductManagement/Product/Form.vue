@@ -84,7 +84,7 @@ import CategoryGroupDropdown from '../CategoryGroup/components/dropdown/DropDown
 
 import ProductInformations from './form_sections/ProductInformations.vue';
 import Attributes from './form_sections/Attributes.vue';
-import AttributesMedicine from './form_sections/AttributesMedicine.vue';
+// import AttributesMedicine from './form_sections/AttributesMedicine.vue';
 import DiscountInfo from './form_sections/DiscountInfo.vue';
 import Pricing from './form_sections/Pricing.vue';
 import Inventroy from './form_sections/Inventroy.vue';
@@ -100,7 +100,7 @@ export default {
 
         ProductInformations,
         Attributes,
-        AttributesMedicine,
+        // AttributesMedicine,
         DiscountInfo,
         Pricing,
         Inventroy,

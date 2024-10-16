@@ -98,7 +98,9 @@
                     <span class="text-danger">*</span>
                 </label>
                 <div>
-                    <input type="text" @change="extractNumberFromString" :value="latest_bar_code" name="barcode" class="form-control">
+                    <input type="text" @change="extractNumberFromString"
+                        :value="latest_bar_code"
+                        name="barcode" class="form-control">
                 </div>
             </div>
             <div class="col-md-4">
@@ -152,7 +154,7 @@ import BrandDropDown from "../../Brand/components/dropdown/DropDownEl.vue"
 import UnitDropDown from "../../Unit/components/dropdown/DropDownEl.vue"
 import ManufactureDropDown from "../../Manufacture/components/dropdown/DropDownEl.vue"
 import CategoryGroupDropDown from "../../CategoryGroup/components/dropdown/DropDownEl.vue"
-import { mapState } from 'pinia'
+import { mapState, mapWritableState } from 'pinia'
 import {store} from '../setup/store'
 export default {
     components: {
@@ -171,6 +173,7 @@ export default {
                 this.product_description= v.description;
                 this.warranty_policy= v.warranty_policy;
                 this.guarenty_policy= v.guarenty_policy;
+                this.latest_bar_code = v.barcode;
             }
         }
     },
@@ -189,7 +192,7 @@ export default {
             })
     },
     computed: {
-        ...mapState(store, {
+        ...mapWritableState(store, {
             item: "item",
             is_loading: 'is_loading',
             latest_bar_code: "latest_bar_code",

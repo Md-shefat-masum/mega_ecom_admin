@@ -6,7 +6,7 @@
                 <div class="label">
                     {{ item.title }}
                     -
-                    {{ item.customer_sales_price }}
+                    {{ item.product_price }}
                 </div>
                 <div @click.prevent="remove_item(item)" class="remove">
                     <i class="fa fa-close"></i>
@@ -42,7 +42,7 @@
                             <img :src="load_image(item.product_image?.url)" style="height: 30px;width: 30px;" />
                             {{ item.id }}
                             <span> - {{ item.title }}</span>
-                            <span> - {{ item.customer_sales_price }} TK</span>
+                            <span> - {{ item.product_price }} TK</span>
                         </div>
                     </label>
                 </li>

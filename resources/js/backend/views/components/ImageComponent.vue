@@ -24,7 +24,7 @@
                     target="_black"
                 />
                 <span v-if="component_value" class="text-warning ml-2">
-                    <i class="fa fa-trash" @click="reset_image()"></i>
+                    <i class="fa fa-trash" @click="reset_image(image)"></i>
                 </span>
             </div>
         </template>
@@ -82,15 +82,22 @@ export default {
         component_value: null,
     }),
     watch: {
-        images: function (v) {
-            this.component_images = this.images;
-            this.component_value = this.images[0];
+        images: {
+            handler: function (v) {
+                this.component_images = this.images;
+                this.component_value = this.images[0];
+            },
+            deep: true,
         },
         component_images: function (v) {
             this.component_value = v[0];
         },
     },
-
+    created: function(){
+        if(this.images.length){
+            this.component_images = this.images;
+        }
+    },
     methods: {
         preview: function () {
             let that = this;

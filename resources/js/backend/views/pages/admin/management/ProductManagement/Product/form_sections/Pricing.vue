@@ -79,7 +79,9 @@
                     {{group.title}} Sales Price
                     <span class="text-danger">*</span>
                 </label>
-                <input type="text" :value="product_price"
+                <input type="hidden" :name="`sales_price_title[${group.id}]`" :value="group.title" />
+                <input type="text"
+                    :value="get_customer_group_price(group.id)"
                     :name="`sales_price[${group.id}]`"
                     :id="`${group.id}_sales_price`"
                     class="form-control">
@@ -174,6 +176,14 @@ export default {
                 .then(res=>{
                     this.customer_groups = res.data.data;
                 })
+        },
+        get_customer_group_price: function(group_id){
+            // console.log()
+            try{
+                return this.price.customer_group_prices.find(i=>i.user_customer_type_id == group_id).price;
+            }catch(error){
+                return this.product_price;
+            }
         }
     }
 }

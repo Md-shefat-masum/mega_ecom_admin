@@ -42,7 +42,7 @@
                                     {{ item.title }} -
                                 </div>
                                 <div class="ms-4 ml-4">
-                                    {{ item.customer_sales_price }} Tk
+                                    {{ item.product_price }} Tk
                                 </div>
                             </div>
                         </div>
